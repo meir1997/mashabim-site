@@ -391,6 +391,45 @@ img, svg { display: block; max-width: 100%; }
 .steps h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .steps p { color: var(--c-muted); font-size: .95rem; margin: 0; }
 
+/* ===== Team ===== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+.team-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  padding: 32px 24px 28px;
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--c-brand-soft);
+}
+.team-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 2rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--c-brand), var(--c-teal));
+  box-shadow: var(--shadow-sm);
+}
+.team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, var(--c-teal), var(--c-accent-deep)); }
+.team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, var(--c-accent-deep), var(--c-accent)); }
+.team-card:nth-child(4) .team-avatar { background: linear-gradient(135deg, var(--c-accent), var(--c-brand)); }
+.team-card h3 { font-size: 1.15rem; margin-bottom: 4px; color: var(--c-brand); }
+.team-role { font-size: .9rem; color: var(--c-muted); margin: 0; }
+
 /* ===== Why ===== */
 .why-grid {
   display: grid;
@@ -577,12 +616,14 @@ img, svg { display: block; max-width: 100%; }
   .col-card { position: static; }
   .cards { grid-template-columns: 1fr; }
   .steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .team-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .why-grid { grid-template-columns: 1fr; }
   .contact-inner { grid-template-columns: 1fr; }
   .hero-points { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 540px) {
   .steps { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
   .contact-form { grid-template-columns: 1fr; }
   .btn { padding: 12px 22px; }
 }
