@@ -433,7 +433,8 @@ img, svg { display: block; max-width: 100%; }
   border: 2px solid #fff;
 }
 .team-card h3 { font-size: 1.15rem; margin-bottom: 4px; color: var(--c-brand); }
-.team-role { font-size: .9rem; color: var(--c-muted); margin: 0; }
+.team-role { font-size: .9rem; color: var(--c-accent-deep); margin: 0 0 12px; font-weight: 600; }
+.team-bio { font-size: .92rem; color: var(--c-ink-soft); line-height: 1.55; text-align: start; margin: 0; }
 
 /* ===== Why ===== */
 .why-grid {
