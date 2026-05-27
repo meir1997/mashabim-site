@@ -454,19 +454,21 @@ img, svg { display: block; max-width: 100%; }
 .why-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 8px;
-  background: var(--c-line-soft);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  padding: 8px;
+  gap: 20px;
 }
 .why-item {
   background: var(--c-surface);
   padding: 32px;
-  border-radius: calc(var(--r-lg) - 6px);
-  transition: background .2s ease;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-line);
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.why-item:hover { background: #fbf9f1; }
+.why-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--c-brand-soft);
+}
 .why-item h3 { color: var(--c-brand); margin-bottom: 10px; position: relative; padding-inline-start: 18px; }
 .why-item h3:before {
   content: '';
