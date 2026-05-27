@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bina-consulting.co.il/sitemap.xml
