@@ -529,9 +529,10 @@ img, svg { display: block; max-width: 100%; }
 
 /* ===== Footer ===== */
 .site-footer {
-  background: #0e1a32;
-  color: #aab4cc;
+  background: #f4f1e7;
+  color: var(--c-ink-soft);
   padding-block: 28px;
+  border-top: 1px solid var(--c-line);
 }
 .footer-inner {
   display: flex;
@@ -541,11 +542,11 @@ img, svg { display: block; max-width: 100%; }
   gap: 14px;
 }
 .footer-brand { display: flex; align-items: center; gap: 12px; line-height: 1.1; }
-.footer-logo { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
+.footer-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
 .footer-brand-text { display: inline-flex; flex-direction: column; line-height: 1.15; }
-.footer-brand .brand-name { color: #fff; font-size: 1.15rem; }
-.footer-brand .brand-tag { color: #8593b1; font-size: .8rem; margin-top: 3px; }
-.footer-copy { margin: 0; font-size: .88rem; color: #7d89a6; }
+.footer-brand .brand-name { color: var(--c-brand); font-size: 1.15rem; font-weight: 900; }
+.footer-brand .brand-tag { color: var(--c-ink-soft); font-size: .8rem; margin-top: 3px; }
+.footer-copy { margin: 0; font-size: .88rem; color: var(--c-muted); }
 
 /* ===== Reveal animation ===== */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
