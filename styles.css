@@ -1,20 +1,23 @@
-/* ===== Tokens ===== */
+/* ===== Tokens (Brand colors from logo) ===== */
 :root {
   --c-bg: #fbfaf6;
   --c-surface: #ffffff;
-  --c-ink: #16213a;
-  --c-ink-soft: #4a5670;
+  --c-ink: #1A2C5C;
+  --c-ink-soft: #3d4a6e;
   --c-muted: #6b7891;
-  --c-line: #e6e2d6;
-  --c-line-soft: #f0ecdf;
-  --c-brand: #1f3a68;
-  --c-brand-deep: #15264a;
-  --c-brand-soft: #eaf0fb;
-  --c-accent: #b9893a;
-  --c-accent-soft: #f5ecd9;
-  --shadow-sm: 0 1px 2px rgba(21,38,74,.05), 0 2px 8px rgba(21,38,74,.04);
-  --shadow-md: 0 6px 18px rgba(21,38,74,.08), 0 2px 6px rgba(21,38,74,.05);
-  --shadow-lg: 0 24px 48px rgba(21,38,74,.12), 0 8px 16px rgba(21,38,74,.06);
+  --c-line: #e4e6ee;
+  --c-line-soft: #eef0f6;
+  --c-brand: #1A2C5C;          /* Navy from logo */
+  --c-brand-deep: #11204a;
+  --c-brand-soft: #e7ecf6;
+  --c-accent: #F5B71F;         /* Yellow/gold from logo */
+  --c-accent-deep: #C99422;    /* Mustard from logo */
+  --c-accent-soft: #FFF3D1;
+  --c-teal: #2D7A78;           /* Teal from logo */
+  --c-teal-soft: #d6ebea;
+  --shadow-sm: 0 1px 2px rgba(26,44,92,.06), 0 2px 8px rgba(26,44,92,.04);
+  --shadow-md: 0 6px 18px rgba(26,44,92,.09), 0 2px 6px rgba(26,44,92,.05);
+  --shadow-lg: 0 24px 48px rgba(26,44,92,.14), 0 8px 16px rgba(26,44,92,.07);
   --r-sm: 8px;
   --r-md: 14px;
   --r-lg: 22px;
@@ -75,17 +78,14 @@ img, svg { display: block; max-width: 100%; }
   color: var(--c-brand);
 }
 .brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 42px; height: 42px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--c-brand), var(--c-brand-deep));
-  color: var(--c-accent);
-  box-shadow: var(--shadow-sm);
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
 }
 .brand-text { display: inline-flex; flex-direction: column; line-height: 1.05; }
-.brand-name { font-family: var(--font-display); font-weight: 900; font-size: 1.35rem; color: var(--c-ink); }
-.brand-tag { font-size: .78rem; color: var(--c-muted); margin-top: 2px; }
+.brand-name { font-family: var(--font-display); font-weight: 900; font-size: 1.4rem; color: var(--c-brand); letter-spacing: -.01em; }
+.brand-tag { font-size: .76rem; color: var(--c-ink-soft); margin-top: 3px; font-weight: 500; }
 
 .main-nav {
   display: flex;
@@ -275,13 +275,13 @@ img, svg { display: block; max-width: 100%; }
   inset-block: 0;
   inset-inline-end: 0;
   width: 6px;
-  background: linear-gradient(180deg, var(--c-accent), #8a6122);
+  background: linear-gradient(180deg, var(--c-accent), var(--c-accent-deep));
 }
 .quote-mark {
   font-family: var(--font-display);
   font-size: 4.5rem;
   line-height: 1;
-  color: var(--c-accent);
+  color: var(--c-teal);
   margin: 0 0 8px;
   opacity: .85;
 }
@@ -315,18 +315,19 @@ img, svg { display: block; max-width: 100%; }
   border-color: var(--c-brand-soft);
 }
 .card-feature {
-  background: linear-gradient(180deg, #fff, #fbf6ea);
+  background: linear-gradient(180deg, #fff, #fffaea);
   border-color: var(--c-accent-soft);
 }
 .card-icon {
   width: 56px; height: 56px;
   display: grid; place-items: center;
   border-radius: 14px;
-  background: var(--c-brand-soft);
-  color: var(--c-brand);
+  background: var(--c-teal-soft);
+  color: var(--c-teal);
   margin-bottom: 18px;
 }
-.card-feature .card-icon { background: var(--c-accent-soft); color: var(--c-accent); }
+.card-feature .card-icon { background: var(--c-accent-soft); color: var(--c-accent-deep); }
+.card:nth-child(3) .card-icon { background: var(--c-brand-soft); color: var(--c-brand); }
 .card h3 { margin-bottom: 10px; }
 .card p { margin-bottom: 18px; }
 .card-list {
@@ -377,13 +378,16 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 2.2rem;
-  background: linear-gradient(135deg, var(--c-brand), var(--c-accent));
+  background: linear-gradient(135deg, var(--c-brand), var(--c-teal));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: block;
   margin-bottom: 8px;
 }
+.steps li:nth-child(2) .step-num { background: linear-gradient(135deg, var(--c-teal), var(--c-accent-deep)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.steps li:nth-child(3) .step-num { background: linear-gradient(135deg, var(--c-accent-deep), var(--c-accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.steps li:nth-child(4) .step-num { background: linear-gradient(135deg, var(--c-accent), var(--c-brand)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .steps h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .steps p { color: var(--c-muted); font-size: .95rem; margin: 0; }
 
@@ -404,7 +408,21 @@ img, svg { display: block; max-width: 100%; }
   transition: background .2s ease;
 }
 .why-item:hover { background: #fbf9f1; }
-.why-item h3 { color: var(--c-brand); margin-bottom: 10px; }
+.why-item h3 { color: var(--c-brand); margin-bottom: 10px; position: relative; padding-inline-start: 18px; }
+.why-item h3:before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-teal);
+}
+.why-item:nth-child(2) h3:before { background: var(--c-accent); }
+.why-item:nth-child(3) h3:before { background: var(--c-accent-deep); }
+.why-item:nth-child(4) h3:before { background: var(--c-brand); }
 .why-item p { margin: 0; }
 
 /* ===== Contact ===== */
@@ -522,9 +540,11 @@ img, svg { display: block; max-width: 100%; }
   flex-wrap: wrap;
   gap: 14px;
 }
-.footer-brand { display: flex; flex-direction: column; line-height: 1.1; }
+.footer-brand { display: flex; align-items: center; gap: 12px; line-height: 1.1; }
+.footer-logo { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
+.footer-brand-text { display: inline-flex; flex-direction: column; line-height: 1.15; }
 .footer-brand .brand-name { color: #fff; font-size: 1.15rem; }
-.footer-brand .brand-tag { color: #8593b1; font-size: .8rem; }
+.footer-brand .brand-tag { color: #8593b1; font-size: .8rem; margin-top: 3px; }
 .footer-copy { margin: 0; font-size: .88rem; color: #7d89a6; }
 
 /* ===== Reveal animation ===== */
