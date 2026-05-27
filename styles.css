@@ -427,6 +427,11 @@ img, svg { display: block; max-width: 100%; }
 .team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, var(--c-teal), var(--c-accent-deep)); }
 .team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, var(--c-accent-deep), var(--c-accent)); }
 .team-card:nth-child(4) .team-avatar { background: linear-gradient(135deg, var(--c-accent), var(--c-brand)); }
+.team-photo {
+  object-fit: cover;
+  background: var(--c-line-soft);
+  border: 2px solid #fff;
+}
 .team-card h3 { font-size: 1.15rem; margin-bottom: 4px; color: var(--c-brand); }
 .team-role { font-size: .9rem; color: var(--c-muted); margin: 0; }
 
