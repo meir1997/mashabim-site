@@ -295,30 +295,34 @@
         ונציע כיוון פעולה אם נראה שיש התאמה.
       </p>
       <ul class="contact-list">
-        <li><span class="lbl">דוא"ל</span><a href="mailto:info@mashabim.org">info@mashabim.org</a></li>
-        <li><span class="lbl">טלפון</span><a href="tel:+972000000000">בקרוב</a></li>
+        <li><span class="lbl">דוא"ל</span><a href="mailto:meir.cohen1997@gmail.com">meir.cohen1997@gmail.com</a></li>
+        <li><span class="lbl">טלפון</span><a href="tel:+972502250493">050-2250493</a></li>
       </ul>
     </div>
-    <form class="contact-form" onsubmit="return handleContact(event)">
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/meir.cohen1997@gmail.com" method="POST" onsubmit="return handleContact(event)">
+      <input type="hidden" name="_subject" value="פנייה חדשה מאתר בינה" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
       <label>
         <span>שם מלא</span>
-        <input type="text" name="name" required autocomplete="name" />
+        <input type="text" name="שם מלא" required autocomplete="name" />
       </label>
       <label>
         <span>שם המוסד / הארגון</span>
-        <input type="text" name="org" autocomplete="organization" />
+        <input type="text" name="מוסד / ארגון" autocomplete="organization" />
       </label>
       <label>
         <span>טלפון</span>
-        <input type="tel" name="phone" required autocomplete="tel" />
+        <input type="tel" name="טלפון" required autocomplete="tel" />
       </label>
       <label>
         <span>דוא"ל</span>
-        <input type="email" name="email" autocomplete="email" />
+        <input type="email" name="דוא״ל" autocomplete="email" />
       </label>
       <label class="full">
         <span>במה נוכל לעזור?</span>
-        <textarea name="message" rows="4"></textarea>
+        <textarea name="הודעה" rows="4"></textarea>
       </label>
       <button type="submit" class="btn btn-primary full">שליחה</button>
       <p class="form-note" id="formNote" hidden>תודה, נחזור אליכם בהקדם.</p>

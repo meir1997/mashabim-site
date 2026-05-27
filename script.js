@@ -32,15 +32,42 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach(el => el.classList.add('is-in'));
 }
 
-// Contact form (no backend yet — show confirmation only)
-function handleContact(e) {
+// Contact form -> FormSubmit (AJAX)
+async function handleContact(e) {
   e.preventDefault();
+  const form = e.target;
   const note = document.getElementById('formNote');
-  if (note) {
-    note.hidden = false;
-    note.textContent = 'תודה – נחזור אליכם בהקדם.';
+  const button = form.querySelector('button[type="submit"]');
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = 'שולח...';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      if (note) {
+        note.hidden = false;
+        note.textContent = 'תודה, נחזור אליכם בהקדם.';
+        note.style.color = '';
+      }
+      form.reset();
+    } else {
+      throw new Error('Server returned ' + response.status);
+    }
+  } catch (err) {
+    if (note) {
+      note.hidden = false;
+      note.textContent = 'אירעה שגיאה. ניתן ליצור קשר ישירות במייל או בטלפון.';
+      note.style.color = '#c0392b';
+    }
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
   }
-  e.target.reset();
   return false;
 }
 window.handleContact = handleContact;
