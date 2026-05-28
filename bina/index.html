@@ -32,11 +32,16 @@
     <p class="sub">מסמכים פנימיים. הזינו את הקוד כדי להמשיך.</p>
     <form id="loginForm" onsubmit="return checkCode(event)">
       <input
-        type="password"
+        type="text"
         id="code"
         class="code-input"
         placeholder="קוד גישה"
         autocomplete="off"
+        autocapitalize="off"
+        autocorrect="off"
+        spellcheck="false"
+        lang="he"
+        dir="rtl"
         autofocus
         required
       />
