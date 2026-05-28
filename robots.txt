@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /bina/
 
 Sitemap: https://bina-consulting.co.il/sitemap.xml

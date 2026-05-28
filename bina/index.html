@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>אזור שותפים | בינה</title>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="192x192" href="/logo-icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css" />
+<style>
+  body { display: grid; place-items: center; min-height: 100vh; background: linear-gradient(135deg, var(--c-brand-deep), var(--c-brand)); padding: 24px; }
+  .login-card { background: var(--c-surface); border-radius: var(--r-lg); padding: 48px 40px; max-width: 420px; width: 100%; box-shadow: var(--shadow-lg); text-align: center; }
+  .login-logo { width: 80px; height: 80px; margin: 0 auto 18px; }
+  .login-card h1 { font-size: 1.6rem; margin: 0 0 8px; color: var(--c-brand); }
+  .login-card .sub { color: var(--c-muted); margin: 0 0 28px; font-size: .95rem; }
+  .code-input { width: 100%; padding: 14px 18px; font-size: 1.1rem; border: 2px solid var(--c-line); border-radius: 12px; text-align: center; font-family: var(--font-display); letter-spacing: .05em; transition: border-color .2s ease; background: var(--c-bg); color: var(--c-ink); }
+  .code-input:focus { outline: none; border-color: var(--c-brand); background: #fff; }
+  .login-btn { width: 100%; margin-top: 16px; padding: 14px; }
+  .login-error { color: #c0392b; font-size: .9rem; margin-top: 14px; min-height: 1.2em; }
+  .login-back { display: inline-block; margin-top: 22px; color: var(--c-muted); font-size: .85rem; }
+  .login-back:hover { color: var(--c-brand); }
+</style>
+</head>
+<body>
+  <div class="login-card">
+    <img class="login-logo" src="/logo-icon-192.png" alt="בינה" />
+    <h1>אזור שותפים</h1>
+    <p class="sub">מסמכים פנימיים. הזינו את הקוד כדי להמשיך.</p>
+    <form id="loginForm" onsubmit="return checkCode(event)">
+      <input
+        type="password"
+        id="code"
+        class="code-input"
+        placeholder="קוד גישה"
+        autocomplete="off"
+        autofocus
+        required
+      />
+      <button type="submit" class="btn btn-primary login-btn">כניסה</button>
+      <p class="login-error" id="loginError">&nbsp;</p>
+    </form>
+    <a href="/" class="login-back">← חזרה לאתר</a>
+  </div>
+
+<script>
+function checkCode(e) {
+  e.preventDefault();
+  const code = document.getElementById('code').value.trim();
+  const err = document.getElementById('loginError');
+  if (code === 'בינה') {
+    sessionStorage.setItem('binaAuth', '1');
+    localStorage.setItem('binaAuth', Date.now().toString());
+    window.location.href = 'dashboard.html';
+  } else {
+    err.textContent = 'קוד שגוי, נסו שוב';
+    document.getElementById('code').value = '';
+    document.getElementById('code').focus();
+  }
+  return false;
+}
+
+// If already logged in (within 30 days), skip to dashboard
+(function() {
+  const auth = localStorage.getItem('binaAuth');
+  if (auth) {
+    const age = Date.now() - parseInt(auth);
+    if (age < 30 * 24 * 60 * 60 * 1000) {
+      window.location.href = 'dashboard.html';
+    }
+  }
+})();
+</script>
+</body>
+</html>
