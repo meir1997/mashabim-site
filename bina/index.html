@@ -49,9 +49,12 @@
 <script>
 function checkCode(e) {
   e.preventDefault();
-  const code = document.getElementById('code').value.trim();
+  // Normalize: trim whitespace including unicode, lowercase, remove control chars
+  const raw = document.getElementById('code').value;
+  const code = raw.replace(/[\s‎‏‪-‮]/g, '').toLowerCase();
   const err = document.getElementById('loginError');
-  if (code === 'בינה') {
+  const accepted = ['בינה', 'bina', 'binah'];
+  if (accepted.includes(code)) {
     sessionStorage.setItem('binaAuth', '1');
     localStorage.setItem('binaAuth', Date.now().toString());
     window.location.href = 'dashboard.html';
