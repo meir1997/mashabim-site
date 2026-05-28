@@ -673,9 +673,12 @@ img, svg { display: block; max-width: 100%; }
 .partners-hero .lede { max-width: 680px; margin: 18px auto 0; color: var(--c-ink-soft); font-size: 1.08rem; }
 .partners-grid-section { padding-top: 16px; }
 .partners-cat-title { font-size: 1.05rem; font-weight: 700; color: var(--c-teal); text-transform: none; letter-spacing: .04em; margin: 38px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--c-line-soft); }
-.partners-grid { list-style: none; padding: 0; margin: 0 0 22px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+.partners-grid { list-style: none; padding: 0; margin: 0 0 22px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; align-items: stretch; }
+.partners-grid > li { display: flex; }
 .partners-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-md);
