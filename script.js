@@ -22,8 +22,15 @@ if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
+        const el = entry.target;
+        // Stagger: פריטים באותה קבוצה (כרטיסים/שלבים) נכנסים בזה אחר זה
+        const group = el.parentElement
+          ? [...el.parentElement.children].filter(c => c.classList.contains('reveal'))
+          : [el];
+        const idx = group.indexOf(el);
+        if (idx > 0) el.style.transitionDelay = Math.min(idx, 6) * 60 + 'ms';
+        el.classList.add('is-in');
+        io.unobserve(el);
       }
     });
   }, { threshold: 0.12 });
