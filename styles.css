@@ -640,6 +640,10 @@ img, svg { display: block; max-width: 100%; }
 .arena-card:nth-child(5) .arena-num { color: var(--c-brand); }
 .arena-card:nth-child(6) .arena-num { color: var(--c-teal); }
 .arena-card:nth-child(7) .arena-num { color: var(--c-accent-deep); }
+.arena-card:nth-child(8) .arena-num { color: var(--c-accent); }
+.arena-card:nth-child(9) .arena-num { color: var(--c-brand); }
+.arena-card:nth-child(10) .arena-num { color: var(--c-teal); }
+.arena-card:nth-child(11) .arena-num { color: var(--c-accent-deep); }
 .arena-card h3 { font-size: 1.12rem; margin: 0 0 8px; color: var(--c-brand); }
 .arena-card p { font-size: .92rem; color: var(--c-ink-soft); margin: 0; line-height: 1.6; }
 .arena-card-link {
