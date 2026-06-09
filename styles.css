@@ -609,6 +609,51 @@ img, svg { display: block; max-width: 100%; }
 .footer-brand .brand-tag { color: var(--c-ink-soft); font-size: .8rem; margin-top: 3px; }
 .footer-copy { margin: 0; font-size: .88rem; color: var(--c-muted); }
 
+/* ===== 7 Arenas ===== */
+.arenas { background: linear-gradient(180deg, var(--c-bg) 0%, #f4f1e7 100%); border-block: 1px solid var(--c-line); }
+.arenas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.arena-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  padding: 26px 24px;
+  position: relative;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.arena-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--c-brand-soft); }
+.arena-num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--c-brand);
+}
+.arena-card:nth-child(1) .arena-num { color: var(--c-brand); }
+.arena-card:nth-child(2) .arena-num { color: var(--c-teal); }
+.arena-card:nth-child(3) .arena-num { color: var(--c-accent-deep); }
+.arena-card:nth-child(4) .arena-num { color: var(--c-accent); }
+.arena-card:nth-child(5) .arena-num { color: var(--c-brand); }
+.arena-card:nth-child(6) .arena-num { color: var(--c-teal); }
+.arena-card:nth-child(7) .arena-num { color: var(--c-accent-deep); }
+.arena-card h3 { font-size: 1.12rem; margin: 0 0 8px; color: var(--c-brand); }
+.arena-card p { font-size: .92rem; color: var(--c-ink-soft); margin: 0; line-height: 1.6; }
+.arena-card-link {
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--c-brand-deep), var(--c-brand));
+  border-color: transparent;
+}
+.arena-card-link h3, .arena-card-link p { color: #fff; }
+.arena-card-link p { color: #c7d0e7; }
+.arena-cta-label { font-size: .8rem; font-weight: 600; color: var(--c-accent); letter-spacing: .04em; display: block; margin-bottom: 10px; }
+.arena-card-link:hover { box-shadow: var(--shadow-lg); }
+@media (max-width: 920px) { .arenas-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 540px) { .arenas-grid { grid-template-columns: 1fr; } }
+
 /* ===== Reveal animation ===== */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
