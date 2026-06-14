@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /bina/
 
-Sitemap: https://bina-consulting.co.il/sitemap.xml
+Sitemap: https://bina-edu.co.il/sitemap.xml
