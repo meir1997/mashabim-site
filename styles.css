@@ -658,39 +658,6 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 920px) { .arenas-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 540px) { .arenas-grid { grid-template-columns: 1fr; } }
 
-/* ===== Quiz banner ===== */
-.quiz-banner { padding-block: clamp(48px, 6vw, 80px); }
-.quiz-banner-inner {
-  background: linear-gradient(135deg, var(--c-brand-deep), var(--c-brand));
-  border-radius: var(--r-lg);
-  padding: clamp(32px, 4vw, 52px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  overflow: hidden;
-}
-.quiz-banner-inner::after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  width: 6px;
-  background: linear-gradient(180deg, var(--c-accent), var(--c-teal));
-}
-.quiz-banner-text { flex: 1; }
-.quiz-banner-text .section-eyebrow { color: var(--c-accent); }
-.quiz-banner-text h2 { color: #fff; margin-bottom: 12px; }
-.quiz-banner-text p { color: #c7d0e7; margin: 0; max-width: 620px; }
-.quiz-banner-btn { background: var(--c-accent); color: var(--c-brand); flex-shrink: 0; white-space: nowrap; }
-.quiz-banner-btn:hover { background: #ffc94a; color: var(--c-brand); }
-@media (max-width: 760px) {
-  .quiz-banner-inner { flex-direction: column; align-items: flex-start; text-align: start; }
-  .quiz-banner-btn { width: 100%; }
-}
-
 /* ===== Reveal animation ===== */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
