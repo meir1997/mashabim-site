@@ -585,24 +585,12 @@
 
                 <hr class="contact-divider">
 
-                <div id="contactFormView">
-                    <h2>סיום ושליחה</h2>
-                    <p class="dim-intro">
-                        בלחיצה על הכפתור נשלח אלינו את פרטי הקשר שמילאתם בתחילת השאלון,
-                        יחד עם תמונת המצב המלאה ותשובות האבחון.
-                    </p>
-                    <form id="contactForm" action="https://formsubmit.co/info@bina-edu.co.il" method="POST" novalidate>
-                        <input type="hidden" name="_subject" value="פנייה חדשה משאלון האבחון של בינה">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <span class="btn-label">שליחת השאלון המלא</span>
-                            <span aria-hidden="true">←</span>
-                        </button>
-                        <p class="form-status" role="status" aria-live="polite"></p>
-                    </form>
-                </div>
+                <form id="contactForm" action="https://formsubmit.co/info@bina-edu.co.il" method="POST" novalidate hidden>
+                    <input type="hidden" name="_subject" value="פנייה חדשה משאלון האבחון של בינה">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                </form>
 
                 <div id="thanksView" class="thanks-view" hidden>
                     <div class="thanks-icon" aria-hidden="true">
@@ -762,8 +750,19 @@
                     renderDimension();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
-                    renderResults();
-                    show('result');
+                    const nextBtn = document.getElementById('btnQuizNext');
+                    const originalHtml = nextBtn.innerHTML;
+                    nextBtn.disabled = true;
+                    nextBtn.innerHTML = 'שולח ומציג תוצאות...';
+                    submitQuestionnaire()
+                        .then(function (sentOk) {
+                            renderResults(sentOk);
+                            show('result');
+                        })
+                        .finally(function () {
+                            nextBtn.disabled = false;
+                            nextBtn.innerHTML = originalHtml;
+                        });
                 }
             });
 
@@ -867,7 +866,7 @@
                 return { cls: 'weak', label: 'תחום לחיזוק' };
             }
 
-            function renderResults() {
+            function renderResults(sentOk) {
                 const s = computeScores();
                 const v = verdictFor(s);
                 document.getElementById('verdictBadge').textContent = v.badge;
@@ -902,6 +901,7 @@
                     '<strong>בקצרה:</strong> ' + strongestText + ', ' +
                     'והממד שהכי כדאי להשקיע בו הוא <strong>' + weakest.title + '</strong>. ' +
                     'באבחון עצמי התמונה תמיד חלקית — שיחה אחת איתנו תחדד אותה.';
+                showThanks(sentOk);
             }
 
             /* ---------- summary & submission ---------- */
@@ -943,12 +943,8 @@
             }
 
             const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const status = contactForm.querySelector('.form-status');
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const labelEl = submitBtn.querySelector('.btn-label');
 
+            async function submitQuestionnaire() {
                 const details = {
                     firstName: document.getElementById('bgFirstName').value.trim(),
                     lastName: document.getElementById('bgLastName').value.trim(),
@@ -963,12 +959,6 @@
                     summary: buildSummary(),
                     answers: buildDetailedAnswers(),
                 };
-
-                submitBtn.disabled = true;
-                const originalLabel = labelEl.textContent;
-                labelEl.textContent = 'שולח...';
-                status.className = 'form-status';
-                status.textContent = '';
 
                 const formData = new FormData(contactForm);
                 formData.set('_subject', 'פנייה משאלון אבחון למנהלים — ' + details.institution);
@@ -993,20 +983,25 @@
                         headers: { 'Accept': 'application/json' }
                     });
                     if (!response.ok) throw new Error('Server returned ' + response.status);
-                    showThanks();
-                    contactForm.reset();
+                    return true;
                 } catch (err) {
                     console.error('Form submission failed', err);
-                    status.className = 'form-status is-error';
-                    status.textContent = 'אירעה שגיאה בשליחה. נסו שוב או צרו קשר ישירות בטלפון.';
-                    submitBtn.disabled = false;
-                    labelEl.textContent = originalLabel;
+                    return false;
                 }
-            });
+            }
 
-            function showThanks() {
-                document.getElementById('contactFormView').hidden = true;
-                document.getElementById('thanksView').hidden = false;
+            function showThanks(sentOk) {
+                const thanksView = document.getElementById('thanksView');
+                const title = thanksView.querySelector('.thanks-title');
+                const sub = thanksView.querySelector('.thanks-sub');
+                if (sentOk) {
+                    title.textContent = 'השאלון נשלח, תודה!';
+                    sub.textContent = 'קיבלנו גם את הפרטים וגם את תוצאות האבחון, ונחזור אליכם בהקדם.';
+                } else {
+                    title.textContent = 'התוצאות מוכנות';
+                    sub.textContent = 'לא הצלחנו לשלוח את הפרטים כרגע. אפשר לנסות שוב מאוחר יותר או ליצור קשר ישירות במייל info@bina-edu.co.il.';
+                }
+                thanksView.hidden = false;
             }
         })();
     </script>
