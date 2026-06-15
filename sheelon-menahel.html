@@ -459,8 +459,8 @@
                     <li>תוצאה מיידית עם המלצה על סוג הליווי המתאים: מלא, ממוקד, או ייעוץ נקודתי</li>
                 </ul>
                 <div class="discreet-note">
-                    השאלון דיסקרטי. התשובות אינן נשמרות ואינן נשלחות לאיש — אלא אם תבחרו
-                    בסוף התהליך להשאיר פרטים ולשתף אותנו בתמונת המצב.
+                    השאלון דיסקרטי. התשובות נשמרות ונשלחות אלינו רק אם תבחרו בסוף
+                    התהליך להשאיר פרטים ולשתף אותנו בתמונת המצב.
                 </div>
                 <div class="btn-row">
                     <button type="button" class="btn btn-primary" id="btnStart">
@@ -476,7 +476,17 @@
                     <div class="progress-track"><div class="progress-fill" id="bgProgressFill" style="width: 14%"></div></div>
                 </div>
                 <h2>קצת על המוסד</h2>
-                <p class="dim-intro">הפרטים האלו עוזרים לנו לפרש את התוצאות נכון. אין צורך בשמות בשלב הזה.</p>
+                <p class="dim-intro">הפרטים האלו עוזרים לנו לפרש את התוצאות נכון, ולחזור אליכם עם תמונת מצב מדויקת אם תבחרו להשאיר פנייה.</p>
+
+                <div class="field">
+                    <label class="field-label" for="bgFirstName">שם פרטי <em>*</em></label>
+                    <input type="text" id="bgFirstName" required placeholder="ישראל" autocomplete="given-name">
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="bgLastName">שם משפחה <em>*</em></label>
+                    <input type="text" id="bgLastName" required placeholder="ישראלי" autocomplete="family-name">
+                </div>
 
                 <div class="field">
                     <label class="field-label" for="bgType">סוג המוסד <em>*</em></label>
@@ -556,11 +566,11 @@
                         השאירו פרטים ונחזור אליכם לשיחת היכרות ללא התחייבות. תמונת המצב
                         מהאבחון תצורף לפנייה כדי שהשיחה תהיה ממוקדת.
                     </p>
-                    <form id="contactForm" novalidate>
-                        <div class="field">
-                            <label class="field-label" for="cName">שם מלא <em>*</em></label>
-                            <input type="text" id="cName" required placeholder="ישראל ישראלי" autocomplete="name">
-                        </div>
+                    <form id="contactForm" action="https://formsubmit.co/meir.cohen1997@gmail.com" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="פנייה חדשה משאלון האבחון של בינה">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         <div class="field">
                             <label class="field-label" for="cInstitution">שם המוסד <em>*</em></label>
                             <input type="text" id="cInstitution" required placeholder="תלמוד תורה...">
@@ -611,14 +621,6 @@
     <script>
         (function () {
             'use strict';
-
-            // ==========================================================
-            // הגדרות שליחה: אם מוגדרת כתובת Apps Script — הפרטים יישלחו
-            // אליה (כמו בעצומה). אם ריק — תיפתח טיוטת מייל עם הסיכום.
-            // ==========================================================
-            const WEB_APP_URL = '';
-            const FALLBACK_EMAIL = 'meir.cohen1997@gmail.com';
-            // ==========================================================
 
             const LIKERT_CAPTIONS = ['כלל לא', 'במידה מועטה', 'באופן חלקי', 'במידה רבה', 'רבה מאוד'];
 
@@ -720,7 +722,8 @@
             document.querySelector('#bgView [data-nav="back"]').addEventListener('click', () => show('intro'));
 
             document.getElementById('btnBgNext').addEventListener('click', () => {
-                const missing = ['bgType', 'bgSize', 'bgYears'].some(id => !document.getElementById(id).value);
+                const missing = ['bgFirstName', 'bgLastName', 'bgType', 'bgSize', 'bgYears']
+                    .some(id => !document.getElementById(id).value.trim());
                 const err = document.getElementById('bgError');
                 if (missing) {
                     err.textContent = 'נא למלא את כל שאלות הרקע לפני ההמשך.';
@@ -899,6 +902,8 @@
                 const lines = [];
                 lines.push('— תמונת מצב מאבחון עצמי באתר בינה —');
                 lines.push('');
+                lines.push('שם פרטי: ' + document.getElementById('bgFirstName').value.trim());
+                lines.push('שם משפחה: ' + document.getElementById('bgLastName').value.trim());
                 lines.push('סוג מוסד: ' + document.getElementById('bgType').value);
                 lines.push('מספר תלמידים: ' + document.getElementById('bgSize').value);
                 lines.push('ותק בניהול: ' + document.getElementById('bgYears').value);
@@ -907,6 +912,16 @@
                 lines.push('');
                 lines.push('סיכום: ' + v.badge);
                 return lines.join('\n');
+            }
+
+            function buildDetailedAnswers() {
+                return DIMENSIONS.map((dim, i) => ({
+                    title: dim.title,
+                    statements: dim.statements.map((text, qi) => ({
+                        text: text,
+                        score: answers[i][qi],
+                    })),
+                }));
             }
 
             const contactForm = document.getElementById('contactForm');
@@ -922,54 +937,58 @@
                 const labelEl = submitBtn.querySelector('.btn-label');
 
                 const details = {
-                    name: document.getElementById('cName').value.trim(),
+                    firstName: document.getElementById('bgFirstName').value.trim(),
+                    lastName: document.getElementById('bgLastName').value.trim(),
                     institution: document.getElementById('cInstitution').value.trim(),
                     city: document.getElementById('cCity').value.trim(),
                     phone: document.getElementById('cPhone').value.trim(),
                     email: document.getElementById('cEmail').value.trim(),
                     notes: document.getElementById('cNotes').value.trim(),
+                    institutionType: document.getElementById('bgType').value,
+                    institutionSize: document.getElementById('bgSize').value,
+                    yearsInRole: document.getElementById('bgYears').value,
                     summary: buildSummary(),
+                    answers: buildDetailedAnswers(),
                 };
 
-                if (WEB_APP_URL) {
-                    submitBtn.disabled = true;
-                    const originalLabel = labelEl.textContent;
-                    labelEl.textContent = 'שולח...';
-                    status.className = 'form-status';
-                    status.textContent = '';
-                    try {
-                        const body = new URLSearchParams(details);
-                        await fetch(WEB_APP_URL, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: body.toString(),
-                        });
-                        showThanks();
-                    } catch (err) {
-                        console.error('Form submission failed', err);
-                        status.className = 'form-status is-error';
-                        status.textContent = 'אירעה שגיאה בשליחה. נסו שוב.';
-                        submitBtn.disabled = false;
-                        labelEl.textContent = originalLabel;
-                    }
-                    return;
-                }
+                submitBtn.disabled = true;
+                const originalLabel = labelEl.textContent;
+                labelEl.textContent = 'שולח...';
+                status.className = 'form-status';
+                status.textContent = '';
 
-                // ללא שרת מוגדר — פתיחת טיוטת מייל מוכנה עם כל הפרטים
-                const bodyText =
-                    'שם: ' + details.name + '\n' +
-                    'מוסד: ' + details.institution + '\n' +
-                    'ישוב: ' + details.city + '\n' +
-                    'טלפון: ' + details.phone + '\n' +
-                    (details.email ? 'דוא"ל: ' + details.email + '\n' : '') +
-                    (details.notes ? '\nהערות:\n' + details.notes + '\n' : '') +
-                    '\n' + details.summary;
-                const mailto = 'mailto:' + FALLBACK_EMAIL +
-                    '?subject=' + encodeURIComponent('פנייה משאלון אבחון למנהלים — ' + details.institution) +
-                    '&body=' + encodeURIComponent(bodyText);
-                window.location.href = mailto;
-                showThanks();
+                const formData = new FormData(contactForm);
+                formData.set('_subject', 'פנייה משאלון אבחון למנהלים — ' + details.institution);
+                formData.append('שם פרטי', details.firstName);
+                formData.append('שם משפחה', details.lastName);
+                formData.append('שם מלא', details.firstName + ' ' + details.lastName);
+                formData.append('שם המוסד', details.institution);
+                formData.append('ישוב', details.city);
+                formData.append('טלפון', details.phone);
+                formData.append('דוא"ל', details.email);
+                formData.append('הערות', details.notes);
+                formData.append('סוג מוסד', details.institutionType);
+                formData.append('מספר תלמידים', details.institutionSize);
+                formData.append('ותק בתפקיד', details.yearsInRole);
+                formData.append('תמונת מצב', details.summary);
+                formData.append('פירוט מלא של התשובות', JSON.stringify(details.answers, null, 2));
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (!response.ok) throw new Error('Server returned ' + response.status);
+                    showThanks();
+                    contactForm.reset();
+                } catch (err) {
+                    console.error('Form submission failed', err);
+                    status.className = 'form-status is-error';
+                    status.textContent = 'אירעה שגיאה בשליחה. נסו שוב או צרו קשר ישירות בטלפון.';
+                    submitBtn.disabled = false;
+                    labelEl.textContent = originalLabel;
+                }
             });
 
             function showThanks() {
