@@ -888,8 +888,8 @@
 
                 const stateDims = s.dims.filter(d => !d.isReadiness);
                 const weakest = stateDims.reduce((a, b) => (b.score < a.score ? b : a));
-                const strongestScore = Math.max.apply(null, stateDims.map(d => d.score));
-                const strongestDims = stateDims.filter(d => d.score === strongestScore);
+                const strongestScore = Math.max.apply(null, s.dims.map(d => d.score));
+                const strongestDims = s.dims.filter(d => d.score === strongestScore);
                 const strongestText = strongestDims.length === 1
                     ? 'הממד החזק ביותר אצלכם הוא <strong>' + strongestDims[0].title + '</strong>'
                     : 'המימדים החזקים שלכם הם <strong>' + strongestDims.map(d => d.title).join('</strong>, <strong>') + '</strong>';
