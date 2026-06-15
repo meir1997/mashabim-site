@@ -524,6 +524,31 @@
                     </select>
                 </div>
 
+                <div class="field">
+                    <label class="field-label" for="bgInstitution">שם המוסד <em>*</em></label>
+                    <input type="text" id="bgInstitution" required placeholder="תלמוד תורה...">
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="bgCity">ישוב <em>*</em></label>
+                    <input type="text" id="bgCity" required placeholder="ירושלים" autocomplete="address-level2">
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="bgPhone">טלפון <em>*</em></label>
+                    <input type="tel" id="bgPhone" required placeholder="050-0000000" autocomplete="tel">
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="bgEmail">דואר אלקטרוני</label>
+                    <input type="email" id="bgEmail" placeholder="name@example.com" autocomplete="email">
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="bgNotes">משהו שחשוב לכם שנדע (לא חובה)</label>
+                    <textarea id="bgNotes" placeholder="אתגר מרכזי, רקע, שאלות..."></textarea>
+                </div>
+
                 <p class="step-error" id="bgError" role="alert"></p>
                 <div class="btn-row">
                     <button type="button" class="btn btn-ghost" data-nav="back">חזרה</button>
@@ -561,38 +586,18 @@
                 <hr class="contact-divider">
 
                 <div id="contactFormView">
-                    <h2>נשמח להכיר</h2>
+                    <h2>סיום ושליחה</h2>
                     <p class="dim-intro">
-                        השאירו פרטים ונחזור אליכם לשיחת היכרות ללא התחייבות. תמונת המצב
-                        מהאבחון תצורף לפנייה כדי שהשיחה תהיה ממוקדת.
+                        בלחיצה על הכפתור נשלח אלינו את פרטי הקשר שמילאתם בתחילת השאלון,
+                        יחד עם תמונת המצב המלאה ותשובות האבחון.
                     </p>
                     <form id="contactForm" action="https://formsubmit.co/info@bina-edu.co.il" method="POST" novalidate>
                         <input type="hidden" name="_subject" value="פנייה חדשה משאלון האבחון של בינה">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                        <div class="field">
-                            <label class="field-label" for="cInstitution">שם המוסד <em>*</em></label>
-                            <input type="text" id="cInstitution" required placeholder="תלמוד תורה...">
-                        </div>
-                        <div class="field">
-                            <label class="field-label" for="cCity">ישוב <em>*</em></label>
-                            <input type="text" id="cCity" required placeholder="ירושלים" autocomplete="address-level2">
-                        </div>
-                        <div class="field">
-                            <label class="field-label" for="cPhone">טלפון <em>*</em></label>
-                            <input type="tel" id="cPhone" required placeholder="050-0000000" autocomplete="tel">
-                        </div>
-                        <div class="field">
-                            <label class="field-label" for="cEmail">דואר אלקטרוני</label>
-                            <input type="email" id="cEmail" placeholder="name@example.com" autocomplete="email">
-                        </div>
-                        <div class="field">
-                            <label class="field-label" for="cNotes">משהו שחשוב לכם שנדע (לא חובה)</label>
-                            <textarea id="cNotes" placeholder="אתגר מרכזי, רקע, שאלות..."></textarea>
-                        </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <span class="btn-label">שליחת הפרטים ותמונת המצב</span>
+                            <span class="btn-label">שליחת השאלון המלא</span>
                             <span aria-hidden="true">←</span>
                         </button>
                         <p class="form-status" role="status" aria-live="polite"></p>
@@ -722,7 +727,7 @@
             document.querySelector('#bgView [data-nav="back"]').addEventListener('click', () => show('intro'));
 
             document.getElementById('btnBgNext').addEventListener('click', () => {
-                const missing = ['bgFirstName', 'bgLastName', 'bgType', 'bgSize', 'bgYears']
+                const missing = ['bgFirstName', 'bgLastName', 'bgType', 'bgSize', 'bgYears', 'bgInstitution', 'bgCity', 'bgPhone']
                     .some(id => !document.getElementById(id).value.trim());
                 const err = document.getElementById('bgError');
                 if (missing) {
@@ -911,6 +916,15 @@
                 lines.push('סוג מוסד: ' + document.getElementById('bgType').value);
                 lines.push('מספר תלמידים: ' + document.getElementById('bgSize').value);
                 lines.push('ותק בניהול: ' + document.getElementById('bgYears').value);
+                lines.push('שם המוסד: ' + document.getElementById('bgInstitution').value.trim());
+                lines.push('ישוב: ' + document.getElementById('bgCity').value.trim());
+                lines.push('טלפון: ' + document.getElementById('bgPhone').value.trim());
+                if (document.getElementById('bgEmail').value.trim()) {
+                    lines.push('דוא"ל: ' + document.getElementById('bgEmail').value.trim());
+                }
+                if (document.getElementById('bgNotes').value.trim()) {
+                    lines.push('הערות: ' + document.getElementById('bgNotes').value.trim());
+                }
                 lines.push('');
                 s.dims.forEach(d => lines.push(d.title + ': ' + d.score.toFixed(1) + '/5'));
                 lines.push('');
@@ -931,11 +945,6 @@
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                if (!contactForm.checkValidity()) {
-                    contactForm.reportValidity();
-                    return;
-                }
-
                 const status = contactForm.querySelector('.form-status');
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
                 const labelEl = submitBtn.querySelector('.btn-label');
@@ -943,11 +952,11 @@
                 const details = {
                     firstName: document.getElementById('bgFirstName').value.trim(),
                     lastName: document.getElementById('bgLastName').value.trim(),
-                    institution: document.getElementById('cInstitution').value.trim(),
-                    city: document.getElementById('cCity').value.trim(),
-                    phone: document.getElementById('cPhone').value.trim(),
-                    email: document.getElementById('cEmail').value.trim(),
-                    notes: document.getElementById('cNotes').value.trim(),
+                    institution: document.getElementById('bgInstitution').value.trim(),
+                    city: document.getElementById('bgCity').value.trim(),
+                    phone: document.getElementById('bgPhone').value.trim(),
+                    email: document.getElementById('bgEmail').value.trim(),
+                    notes: document.getElementById('bgNotes').value.trim(),
                     institutionType: document.getElementById('bgType').value,
                     institutionSize: document.getElementById('bgSize').value,
                     yearsInRole: document.getElementById('bgYears').value,
