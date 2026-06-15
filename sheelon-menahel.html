@@ -566,7 +566,7 @@
                         השאירו פרטים ונחזור אליכם לשיחת היכרות ללא התחייבות. תמונת המצב
                         מהאבחון תצורף לפנייה כדי שהשיחה תהיה ממוקדת.
                     </p>
-                    <form id="contactForm" action="https://formsubmit.co/meir.cohen1997@gmail.com" method="POST" novalidate>
+                    <form id="contactForm" action="https://formsubmit.co/info@bina-edu.co.il" method="POST" novalidate>
                         <input type="hidden" name="_subject" value="פנייה חדשה משאלון האבחון של בינה">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
@@ -888,9 +888,13 @@
 
                 const stateDims = s.dims.filter(d => !d.isReadiness);
                 const weakest = stateDims.reduce((a, b) => (b.score < a.score ? b : a));
-                const strongest = stateDims.reduce((a, b) => (b.score > a.score ? b : a));
+                const strongestScore = Math.max.apply(null, stateDims.map(d => d.score));
+                const strongestDims = stateDims.filter(d => d.score === strongestScore);
+                const strongestText = strongestDims.length === 1
+                    ? 'הממד החזק ביותר אצלכם הוא <strong>' + strongestDims[0].title + '</strong>'
+                    : 'המימדים החזקים שלכם הם <strong>' + strongestDims.map(d => d.title).join('</strong>, <strong>') + '</strong>';
                 document.getElementById('resultNote').innerHTML =
-                    '<strong>בקצרה:</strong> הממד החזק ביותר אצלכם הוא <strong>' + strongest.title + '</strong>, ' +
+                    '<strong>בקצרה:</strong> ' + strongestText + ', ' +
                     'והממד שהכי כדאי להשקיע בו הוא <strong>' + weakest.title + '</strong>. ' +
                     'באבחון עצמי התמונה תמיד חלקית — שיחה אחת איתנו תחדד אותה.';
             }
