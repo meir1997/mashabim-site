@@ -775,7 +775,7 @@
                 document.getElementById('quizProgressText').textContent = 'שלב ' + stepNum + ' מתוך ' + TOTAL_STEPS;
                 document.getElementById('quizProgressFill').style.width = Math.round((stepNum / TOTAL_STEPS) * 100) + '%';
                 document.getElementById('btnQuizNext').innerHTML = dimIndex === DIMENSIONS.length - 1
-                    ? 'לצפייה בתוצאות <span aria-hidden="true">←</span>'
+                    ? 'לשליחה וצפייה בתוצאות <span aria-hidden="true">←</span>'
                     : 'המשך <span aria-hidden="true">←</span>';
 
                 const box = document.getElementById('statementsBox');
