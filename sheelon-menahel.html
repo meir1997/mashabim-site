@@ -920,7 +920,7 @@
                 lines.push('ישוב: ' + document.getElementById('bgCity').value.trim());
                 lines.push('טלפון: ' + document.getElementById('bgPhone').value.trim());
                 if (document.getElementById('bgEmail').value.trim()) {
-                    lines.push('דוא"ל: ' + document.getElementById('bgEmail').value.trim());
+                    lines.push('אימייל: ' + document.getElementById('bgEmail').value.trim());
                 }
                 if (document.getElementById('bgNotes').value.trim()) {
                     lines.push('הערות: ' + document.getElementById('bgNotes').value.trim());
@@ -978,7 +978,7 @@
                 formData.append('שם המוסד', details.institution);
                 formData.append('ישוב', details.city);
                 formData.append('טלפון', details.phone);
-                formData.append('דוא"ל', details.email);
+                formData.append('אימייל', details.email);
                 formData.append('הערות', details.notes);
                 formData.append('סוג מוסד', details.institutionType);
                 formData.append('מספר תלמידים', details.institutionSize);
