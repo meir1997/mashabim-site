@@ -942,6 +942,16 @@
                 }));
             }
 
+            function formatDetailedAnswers(detailsAnswers) {
+                return detailsAnswers.map((section) => {
+                    const lines = [section.title];
+                    section.statements.forEach((item) => {
+                        lines.push('- ' + item.text + ': ' + item.score);
+                    });
+                    return lines.join('\n');
+                }).join('\n\n');
+            }
+
             const contactForm = document.getElementById('contactForm');
 
             async function submitQuestionnaire() {
@@ -974,7 +984,7 @@
                 formData.append('מספר תלמידים', details.institutionSize);
                 formData.append('ותק בתפקיד', details.yearsInRole);
                 formData.append('תמונת מצב', details.summary);
-                formData.append('פירוט מלא של התשובות', JSON.stringify(details.answers, null, 2));
+                formData.append('פירוט מלא של התשובות', formatDetailedAnswers(details.answers));
 
                 try {
                     const ajaxAction = contactForm.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
