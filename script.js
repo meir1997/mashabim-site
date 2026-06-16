@@ -50,12 +50,14 @@ async function handleContact(e) {
   button.textContent = 'שולח...';
 
   try {
-    const response = await fetch(form.action, {
+    const ajaxAction = form.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+    const response = await fetch(ajaxAction, {
       method: 'POST',
       body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     });
-    if (response.ok) {
+    const data = await response.json().catch(() => null);
+    if (response.ok && data && data.success === 'true') {
       if (note) {
         note.hidden = false;
         note.textContent = 'תודה, נחזור אליכם בהקדם.';

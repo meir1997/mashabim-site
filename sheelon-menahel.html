@@ -977,12 +977,16 @@
                 formData.append('פירוט מלא של התשובות', JSON.stringify(details.answers, null, 2));
 
                 try {
-                    const response = await fetch(contactForm.action, {
+                    const ajaxAction = contactForm.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+                    const response = await fetch(ajaxAction, {
                         method: 'POST',
                         body: formData,
                         headers: { 'Accept': 'application/json' }
                     });
-                    if (!response.ok) throw new Error('Server returned ' + response.status);
+                    const data = await response.json().catch(() => null);
+                    if (!response.ok || !data || data.success !== 'true') {
+                        throw new Error('Server returned ' + response.status);
+                    }
                     return true;
                 } catch (err) {
                     console.error('Form submission failed', err);
