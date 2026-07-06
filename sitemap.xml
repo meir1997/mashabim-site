@@ -40,4 +40,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-  <url></urlset>
+  <url>
+    <loc>https://bina-edu.co.il/blog/budget-request-mistakes.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://bina-edu.co.il/blog/when-to-call-consultant.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://bina-edu.co.il/blog/gefen-2026-guide.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://bina-edu.co.il/blog/principal-bureaucracy.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+</urlset>
