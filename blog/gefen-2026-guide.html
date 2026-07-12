@@ -61,105 +61,174 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  @keyframes binaFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #1A2C5C; color: #fff; }
+  .bnav-link { padding: 9px 13px; font-size: 15px; font-weight: 500; color: #3A4156; text-decoration: none; border-radius: 8px; transition: background .18s, color .18s; }
+  .bnav-link:hover { background: rgba(26,44,92,0.06); color: #1A2C5C; }
+  .bnav-cta { flex: none; padding: 11px 22px; background: #1A2C5C; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 16px rgba(26,44,92,0.22); transition: transform .2s, box-shadow .2s; }
+  .bnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(26,44,92,0.28); }
+  .bcrumb { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .18s; }
+  .bcrumb:hover { color: #D8B877; }
+  .bcta { display: inline-block; padding: 15px 34px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34); transition: transform .2s, box-shadow .2s; }
+  .bcta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bback { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px; transition: background .2s, border-color .2s; }
+  .bback:hover { background: #fff; border-color: #B5894E; }
+  .bcard { transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bfeat { transition: transform .25s, box-shadow .25s; }
+  .bfeat:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(26,44,92,0.12); }
+  @media (max-width: 820px) { .bnav-links { display: none !important; } }
+</style>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  @keyframes binaFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #1A2C5C; color: #fff; }
+  .bnav-link { padding: 9px 13px; font-size: 15px; font-weight: 500; color: #3A4156; text-decoration: none; border-radius: 8px; transition: background .18s, color .18s; }
+  .bnav-link:hover { background: rgba(26,44,92,0.06); color: #1A2C5C; }
+  .bnav-cta { flex: none; padding: 11px 22px; background: #1A2C5C; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 16px rgba(26,44,92,0.22); transition: transform .2s, box-shadow .2s; }
+  .bnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(26,44,92,0.28); }
+  .bcrumb { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .18s; }
+  .bcrumb:hover { color: #D8B877; }
+  .bcta { display: inline-block; padding: 15px 34px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34); transition: transform .2s, box-shadow .2s; }
+  .bcta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bback { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px; transition: background .2s, border-color .2s; }
+  .bback:hover { background: #fff; border-color: #B5894E; }
+  .bcard { transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bfeat { transition: transform .25s, box-shadow .25s; }
+  .bfeat:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(26,44,92,0.12); }
+  .btile { transition: transform .25s, box-shadow .25s; }
+  .btile:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(26,44,92,0.1); }
+  .barena { transition: background .2s; }
+  .barena:hover { background: #22397A; }
+  .bservice { transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .bservice:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); border-color: rgba(181,137,78,0.4); }
+  .bmodelcard { transition: transform .25s, box-shadow .25s; }
+  .bmodelcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bteam { transition: box-shadow .25s; }
+  .bteam:hover { box-shadow: 0 18px 40px rgba(26,44,92,0.1); }
+  .boutline { transition: background .2s, border-color .2s; }
+  .boutline:hover { background: #F7F4EE; border-color: #B5894E; }
+  .bhero-cta { transition: transform .2s, box-shadow .2s; }
+  .bhero-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bhero-ghost { transition: background .2s; }
+  .bhero-ghost:hover { background: rgba(255,255,255,0.16); }
+  .bcontact-row { transition: border-color .2s; }
+  .bcontact-row:hover { border-color: #B5894E; }
+  .binput { font-family: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid rgba(26,44,92,0.18); border-radius: 10px; background: #FAF9F6; color: #1E2230; outline: none; transition: border-color .18s, background .18s; }
+  .binput:focus { border-color: #B5894E; background: #fff; }
+  .bsubmit { margin-top: 22px; width: 100%; padding: 16px; background: #1A2C5C; color: #fff; font-family: inherit; font-size: 17px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 26px rgba(26,44,92,0.24); transition: transform .2s, box-shadow .2s; }
+  .bsubmit:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(26,44,92,0.3); }
+  @media (max-width: 820px) { .bnav-links { display: none !important; } }
+  @media (max-width: 900px) { .bgrid-2, .bgrid-3, .bgrid-4, .bgrid-5, .bgrid-hero, .bgrid-contact { grid-template-columns: 1fr !important; } .bgrid-2 { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 600px) { .bgrid-2 { grid-template-columns: 1fr !important; } }
+</style>
 </head>
 <body>
+<div dir="rtl" lang="he" style="font-family: 'Assistant', system-ui, sans-serif; color: #1E2230; background: #F7F4EE; -webkit-font-smoothing: antialiased; overflow-x: hidden;">
 
-<header class="site-header">
-  <div class="container nav">
-    <a href="/" class="brand" aria-label="בינה - דף הבית">
-      <img class="brand-mark" src="/logo-icon-192.png" alt="" width="44" height="44" />
-      <span class="brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי</span>
-      </span>
-    </a>
-    <nav class="main-nav" aria-label="ניווט ראשי">
-      <a href="/#vision">החזון</a>
-      <a href="/#services">שירותים</a>
-      <a href="/#approach">השיטה</a>
-      <a href="/models.html">המודלים שלנו</a>
-      <a href="/#team">מי אנחנו</a>
-      <a href="/#ethics">אתיקה</a>
-      <a href="/blog/" class="is-active">מאמרים</a>
-      <a href="/#contact" class="nav-cta">דברו איתנו</a>
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(247,244,238,0.88); backdrop-filter: saturate(140%) blur(12px); border-bottom: 1px solid rgba(26,44,92,0.10);">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1A2C5C;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 40px; height: 40px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px; box-shadow: 0 2px 8px rgba(26,44,92,0.12);">
+        <span style="display: flex; flex-direction: column; line-height: 1.05;">
+          <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 20px;">בינה</span>
+          <span style="font-size: 11px; letter-spacing: 1.5px; color: #8A7A55; font-weight: 600;">ייעוץ ארגוני וחינוכי</span>
+        </span>
+      </a>
+      <div class="bnav-links" style="display: flex; align-items: center; gap: 4px;">
+        <a href="/#vision" class="bnav-link">החזון</a>
+        <a href="/#services" class="bnav-link">שירותים</a>
+        <a href="/#approach" class="bnav-link">השיטה</a>
+        <a href="/models.html" class="bnav-link">המודלים</a>
+        <a href="/#team" class="bnav-link">מי אנחנו</a>
+        <a href="/blog/" class="bnav-link" style="font-weight: 600; color: #1A2C5C; background: rgba(181,137,78,0.14);">מאמרים</a>
+      </div>
+      <a href="/#contact" class="bnav-cta">דברו איתנו</a>
     </nav>
-    <button class="nav-toggle" aria-label="פתיחת תפריט" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+  </header>
 
-<main id="top">
-
-<article class="article">
-  <header class="article-header">
-    <div class="container">
-      <p class="article-eyebrow">תקציבים ומימון</p>
-      <h1>תקציב הגפ&quot;ן, עם בינה: מגמישות תקציבית לניהול חינוכי מדויק</h1>
-      <p class="article-meta">
+  <article>
+  <!-- ARTICLE HEADER -->
+  <header style="position: relative; background: linear-gradient(180deg, #142042 0%, #1A2C5C 75%, #1E3266 100%); color: #fff; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 88% 14%, rgba(181,137,78,0.18), transparent 44%); pointer-events: none;"></div>
+    <div style="position: absolute; top: -1px; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #B5894E, #D8B877, #B5894E);"></div>
+    <div style="position: relative; max-width: 800px; margin: 0 auto; padding: 36px 28px 76px; animation: binaFade .8s ease both;">
+      <nav style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 40px;"><a href="/blog/" class="bcrumb">מאמרים</a> <span style="margin: 0 6px;">›</span> <span style="color: #D8B877;">תקציבים ומימון</span></nav>
+      <span style="display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #1A2C5C; background: #D8B877; padding: 5px 13px; border-radius: 20px; margin-bottom: 22px;">תקציבים ומימון</span>
+      <h1 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.14; letter-spacing: -0.5px; margin: 0 0 22px;">תקציב הגפ״ן, עם בינה: מגמישות תקציבית לניהול חינוכי מדויק</h1>
+      <div style="display: flex; align-items: center; gap: 14px; font-size: 15px; color: rgba(255,255,255,0.72);">
         <span>מאי 2026</span>
-        <span class="dot" aria-hidden="true">·</span>
+        <span style="width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.4);"></span>
         <span>5 דקות קריאה</span>
-      </p>
+      </div>
     </div>
   </header>
 
-  <div class="article-body container">
+  <!-- ARTICLE BODY -->
+  <div style="max-width: 760px; margin: 0 auto; padding: 64px 28px 40px;">
+    <p style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; line-height: 1.65; color: #2A3145; margin: 0 0 40px; font-weight: 500;">מערכת החינוך עוברת בשנים האחרונות משפה של תקציב לשפה של ניהול. הגפ״ן, הפל״ג וסלי תקומה-תנופה אינם רק מסגרות תקציביות, אלא הזדמנות לבנות במוסד תהליך עבודה ברור, מדויק ומבוסס נתונים: מה הצורך, מה המטרה, מה עושים בפועל, באילו משאבים משתמשים, ואיך יודעים שהצלחנו.</p>
 
-    <p class="article-lede">מערכת החינוך עוברת בשנים האחרונות משפה של תקציב לשפה של ניהול. הגפ&quot;ן, הפל&quot;ג וסלי תקומה-תנופה אינם רק מסגרות תקציביות, אלא הזדמנות לבנות במוסד תהליך עבודה ברור, מדויק ומבוסס נתונים: מה הצורך, מה המטרה, מה עושים בפועל, באילו משאבים משתמשים, ואיך יודעים שהצלחנו.</p>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">למי פוגש כל מסלול</h2>
 
-    <h2>למי פוגש כל מסלול</h2>
-    <p>בציבור החרדי, הגפ&quot;ן פוגש ביסודי בעיקר את מוסדות הממ&quot;ח, ובעל-יסודי את מוסדות המוכש&quot;ר, הכוללים בין היתר סמינרים וישיבות תיכוניות. הפל&quot;ג, פדגוגיה לניהול גמיש, פוגש את כלל מוסדות החינוך המיוחד. לצידם, סלי תקומה ותנופה, שנועדו לתלמידים מהאזורים שנפגעו במלחמה, פוגשים את כלל המעמדות המשפטיים ומאפשרים מתן מענה ממוקד לצרכים שנוצרו בעקבות המציאות הביטחונית.</p>
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">בציבור החרדי, הגפ״ן פוגש ביסודי בעיקר את מוסדות הממ״ח, ובעל-יסודי את מוסדות המוכש״ר, הכוללים בין היתר סמינרים וישיבות תיכוניות. הפל״ג, פדגוגיה לניהול גמיש, פוגש את כלל מוסדות החינוך המיוחד. לצידם, סלי תקומה ותנופה, שנועדו לתלמידים מהאזורים שנפגעו במלחמה, פוגשים את כלל המעמדות המשפטיים ומאפשרים מתן מענה ממוקד לצרכים שנוצרו בעקבות המציאות הביטחונית.</p>
 
-    <h2>כאן נכנסת בינה</h2>
-    <p>תפקידנו הוא לסייע למנהל להפוך את המורכבות לתהליך ניהולי ברור. מצד אחד, לבנות לעצמו תמונת עבודה מסודרת: מהם הפערים המרכזיים במוסד, אילו יעדים נכון להציב, מהי תוכנית הפעולה, מי אחראי על כל שלב, ומהם מדדי ההצלחה. מצד שני, להפוך את התוכנית לשפה מקצועית שניתן להציג לפיקוח, לרשות, לצוות ולשותפים נוספים באופן ברור, משכנע ומגובה בנתונים.</p>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">כאן נכנסת בינה</h2>
 
-    <h2>הגדרת תפקידים ברורה</h2>
-    <p>אחד הערכים המרכזיים בתהליך הוא הגדרת תפקידים ברורה. כאשר המנהל, הרכזים, אנשי הטיפול, הצוות החינוכי והגורמים המלווים יודעים מהו חלקם במהלך, התוכנית אינה נשארת מסמך פורמלי אלא הופכת למנגנון עבודה חי. הגדרה נכונה של תפקידים מאפשרת למנהל להוביל ולא לרדוף אחרי משימות, לחבר את הצוות לאחריות משותפת, ולוודא שכל פעולה מקדמת את היעד שנבחר.</p>
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">תפקידנו הוא לסייע למנהל להפוך את המורכבות לתהליך ניהולי ברור. מצד אחד, לבנות לעצמו תמונת עבודה מסודרת: מהם הפערים המרכזיים במוסד, אילו יעדים נכון להציב, מהי תוכנית הפעולה, מי אחראי על כל שלב, ומהם מדדי ההצלחה. מצד שני, להפוך את התוכנית לשפה מקצועית שניתן להציג לפיקוח, לרשות, לצוות ולשותפים נוספים באופן ברור, משכנע ומגובה בנתונים.</p>
 
-    <h2>ניצול התקציב ביושר ובחכמה</h2>
-    <p>לצד זאת, בינה מסייעת למוסד להבין כיצד לנצל את התקציב ביושר, בחכמה ובהלימה מלאה למטרות. התקציב אינו נועד להתפזר על צרכים כלליים או על הוצאות שאינן קשורות לתוכנית, אלא לשרת מהלך חינוכי מוגדר. כל הוצאה צריכה להיות מחוברת ליוזמה, כל יוזמה צריכה להיות מחוברת למטרה, וכל מטרה צריכה להישען על צורך אמיתי שעלה מהמיפוי.</p>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">הגדרת תפקידים ברורה</h2>
 
-    <h2>שפה ניהולית חדשה</h2>
-    <p>כך נוצרת שפה ניהולית חדשה: לא &quot;מה אפשר לקנות&quot;, אלא &quot;איזה שינוי אנחנו רוצים ליצור&quot;; לא &quot;איך מנצלים תקציב&quot;, אלא &quot;איך משתמשים במשאב כדי לקדם תלמידים, צוות ומוסד&quot;. שימוש נכון בגפ&quot;ן ובפל&quot;ג מאפשר איגום משאבים, חיסכון בטעויות, צמצום כפילויות, בניית מענים מדויקים, והפיכת התקציב לכלי שמייצר השפעה ממשית בשטח.</p>
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">אחד הערכים המרכזיים בתהליך הוא הגדרת תפקידים ברורה. כאשר המנהל, הרכזים, אנשי הטיפול, הצוות החינוכי והגורמים המלווים יודעים מהו חלקם במהלך, התוכנית אינה נשארת מסמך פורמלי אלא הופכת למנגנון עבודה חי. הגדרה נכונה של תפקידים מאפשרת למנהל להוביל ולא לרדוף אחרי משימות, לחבר את הצוות לאחריות משותפת, ולוודא שכל פעולה מקדמת את היעד שנבחר.</p>
 
-    <h2>מנוף למנהיגות חינוכית</h2>
-    <p>בסופו של דבר, בינה רואה בגפ&quot;ן, בפל&quot;ג ובסלי תקומה-תנופה לא רק מערכת דיווח או חובה מנהלית, אלא מנוף למנהיגות חינוכית. כאשר המנהל עובד מתוך מיפוי, תכנון, יישום ובקרה, וכאשר התקציב מנוצל מתוך אחריות, שקיפות ותבונה, נוצרת תוכנית שמשרתת באמת את התלמידים ומקדמת את המוסד כולו.</p>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">ניצול התקציב ביושר ובחכמה</h2>
 
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">לצד זאת, בינה מסייעת למוסד להבין כיצד לנצל את התקציב ביושר, בחכמה ובהלימה מלאה למטרות. התקציב אינו נועד להתפזר על צרכים כלליים או על הוצאות שאינן קשורות לתוכנית, אלא לשרת מהלך חינוכי מוגדר. כל הוצאה צריכה להיות מחוברת ליוזמה, כל יוזמה צריכה להיות מחוברת למטרה, וכל מטרה צריכה להישען על צורך אמיתי שעלה מהמיפוי.</p>
+
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">שפה ניהולית חדשה</h2>
+
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">כך נוצרת שפה ניהולית חדשה: לא ״מה אפשר לקנות״, אלא ״איזה שינוי אנחנו רוצים ליצור״; לא ״איך מנצלים תקציב״, אלא ״איך משתמשים במשאב כדי לקדם תלמידים, צוות ומוסד״. שימוש נכון בגפ״ן ובפל״ג מאפשר איגום משאבים, חיסכון בטעויות, צמצום כפילויות, בניית מענים מדויקים, והפיכת התקציב לכלי שמייצר השפעה ממשית בשטח.</p>
+
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">מנוף למנהיגות חינוכית</h2>
+
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">בסופו של דבר, בינה רואה בגפ״ן, בפל״ג ובסלי תקומה-תנופה לא רק מערכת דיווח או חובה מנהלית, אלא מנוף למנהיגות חינוכית. כאשר המנהל עובד מתוך מיפוי, תכנון, יישום ובקרה, וכאשר התקציב מנוצל מתוך אחריות, שקיפות ותבונה, נוצרת תוכנית שמשרתת באמת את התלמידים ומקדמת את המוסד כולו.</p>
   </div>
+  </article>
 
-  <div class="article-cta">
-    <div class="container">
-      <h2>רוצים שנעזור למצות את התקציב במוסד שלכם?</h2>
-      <p>פגישת היכרות ראשונית ללא עלות וללא התחייבות. מסלולי הליווי מוצעים בעלות מסובסדת בהתאם לצרכי המוסד.</p>
-      <a href="/#contact" class="btn btn-primary">דברו איתנו</a>
+  <!-- CTA -->
+  <section style="padding: 76px 28px; background: linear-gradient(160deg, #142042, #1A2C5C); color: #fff; text-align: center; margin-top: 32px;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.2; margin: 0 0 16px;">רוצים שנעזור למצות את התקציב במוסד שלכם?</h2>
+      <p style="font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.8); margin: 0 0 30px; font-weight: 300;">פגישת התאמה ראשונה ללא עלות וללא התחייבות. מסלולי הליווי מוצעים בעלות מסובסדת בהתאם לצרכי המוסד.</p>
+      <a href="/#contact" class="bcta">דברו איתנו</a>
     </div>
+  </section>
+
+  <!-- BACK -->
+  <div style="max-width: 760px; margin: 0 auto; padding: 40px 28px;">
+    <a href="/blog/" class="bback">→ חזרה לכל המאמרים</a>
   </div>
-</article>
 
-<section class="section blog-back">
-  <div class="container">
-    <a href="/blog/" class="blog-back-link"><span aria-hidden="true">→</span> חזרה לכל המאמרים</a>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/logo-icon-192.png" alt="" width="40" height="40" />
-      <span class="footer-brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי לציבור החרדי</span>
-      </span>
+  <!-- FOOTER -->
+  <footer style="background: #101A36; color: rgba(255,255,255,0.7); padding: 44px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 38px; height: 38px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px;">
+        <span style="font-family: 'Frank Ruhl Libre', serif; font-size: 17px; color: #fff; font-weight: 500;">בינה · ייעוץ ארגוני וחינוכי לציבור החרדי</span>
+      </div>
+      <span style="font-size: 14px;">© <span id="year"></span> בינה · כל הזכויות שמורות</span>
     </div>
-    <p class="footer-copy">© <span id="year"></span> בינה · כל הזכויות שמורות</p>
-  </div>
-</footer>
+  </footer>
 
-<script src="/script.js"></script>
+</div>
+<script>var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

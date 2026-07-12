@@ -63,124 +63,228 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  @keyframes binaFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #1A2C5C; color: #fff; }
+  .bnav-link { padding: 9px 13px; font-size: 15px; font-weight: 500; color: #3A4156; text-decoration: none; border-radius: 8px; transition: background .18s, color .18s; }
+  .bnav-link:hover { background: rgba(26,44,92,0.06); color: #1A2C5C; }
+  .bnav-cta { flex: none; padding: 11px 22px; background: #1A2C5C; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 16px rgba(26,44,92,0.22); transition: transform .2s, box-shadow .2s; }
+  .bnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(26,44,92,0.28); }
+  .bcrumb { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .18s; }
+  .bcrumb:hover { color: #D8B877; }
+  .bcta { display: inline-block; padding: 15px 34px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34); transition: transform .2s, box-shadow .2s; }
+  .bcta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bback { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px; transition: background .2s, border-color .2s; }
+  .bback:hover { background: #fff; border-color: #B5894E; }
+  .bcard { transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bfeat { transition: transform .25s, box-shadow .25s; }
+  .bfeat:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(26,44,92,0.12); }
+  @media (max-width: 820px) { .bnav-links { display: none !important; } }
+</style>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  @keyframes binaFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #1A2C5C; color: #fff; }
+  .bnav-link { padding: 9px 13px; font-size: 15px; font-weight: 500; color: #3A4156; text-decoration: none; border-radius: 8px; transition: background .18s, color .18s; }
+  .bnav-link:hover { background: rgba(26,44,92,0.06); color: #1A2C5C; }
+  .bnav-cta { flex: none; padding: 11px 22px; background: #1A2C5C; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 16px rgba(26,44,92,0.22); transition: transform .2s, box-shadow .2s; }
+  .bnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(26,44,92,0.28); }
+  .bcrumb { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .18s; }
+  .bcrumb:hover { color: #D8B877; }
+  .bcta { display: inline-block; padding: 15px 34px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34); transition: transform .2s, box-shadow .2s; }
+  .bcta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bback { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px; transition: background .2s, border-color .2s; }
+  .bback:hover { background: #fff; border-color: #B5894E; }
+  .bcard { transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bfeat { transition: transform .25s, box-shadow .25s; }
+  .bfeat:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(26,44,92,0.12); }
+  .btile { transition: transform .25s, box-shadow .25s; }
+  .btile:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(26,44,92,0.1); }
+  .barena { transition: background .2s; }
+  .barena:hover { background: #22397A; }
+  .bservice { transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .bservice:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); border-color: rgba(181,137,78,0.4); }
+  .bmodelcard { transition: transform .25s, box-shadow .25s; }
+  .bmodelcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bteam { transition: box-shadow .25s; }
+  .bteam:hover { box-shadow: 0 18px 40px rgba(26,44,92,0.1); }
+  .boutline { transition: background .2s, border-color .2s; }
+  .boutline:hover { background: #F7F4EE; border-color: #B5894E; }
+  .bhero-cta { transition: transform .2s, box-shadow .2s; }
+  .bhero-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bhero-ghost { transition: background .2s; }
+  .bhero-ghost:hover { background: rgba(255,255,255,0.16); }
+  .bcontact-row { transition: border-color .2s; }
+  .bcontact-row:hover { border-color: #B5894E; }
+  .binput { font-family: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid rgba(26,44,92,0.18); border-radius: 10px; background: #FAF9F6; color: #1E2230; outline: none; transition: border-color .18s, background .18s; }
+  .binput:focus { border-color: #B5894E; background: #fff; }
+  .bsubmit { margin-top: 22px; width: 100%; padding: 16px; background: #1A2C5C; color: #fff; font-family: inherit; font-size: 17px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 26px rgba(26,44,92,0.24); transition: transform .2s, box-shadow .2s; }
+  .bsubmit:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(26,44,92,0.3); }
+  @media (max-width: 820px) { .bnav-links { display: none !important; } }
+  @media (max-width: 900px) { .bgrid-2, .bgrid-3, .bgrid-4, .bgrid-5, .bgrid-hero, .bgrid-contact { grid-template-columns: 1fr !important; } .bgrid-2 { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 600px) { .bgrid-2 { grid-template-columns: 1fr !important; } }
+</style>
 </head>
 <body>
+<div dir="rtl" lang="he" style="font-family: 'Assistant', system-ui, sans-serif; color: #1E2230; background: #F7F4EE; -webkit-font-smoothing: antialiased; overflow-x: hidden;">
 
-<header class="site-header">
-  <div class="container nav">
-    <a href="/" class="brand" aria-label="בינה - דף הבית">
-      <img class="brand-mark" src="/logo-icon-192.png" alt="" width="44" height="44" />
-      <span class="brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי</span>
-      </span>
-    </a>
-    <nav class="main-nav" aria-label="ניווט ראשי">
-      <a href="/#vision">החזון</a>
-      <a href="/#services">שירותים</a>
-      <a href="/#approach">השיטה</a>
-      <a href="/models.html">המודלים שלנו</a>
-      <a href="/#team">מי אנחנו</a>
-      <a href="/#ethics">אתיקה</a>
-      <a href="/blog/" class="is-active">מאמרים</a>
-      <a href="/#contact" class="nav-cta">דברו איתנו</a>
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(247,244,238,0.88); backdrop-filter: saturate(140%) blur(12px); border-bottom: 1px solid rgba(26,44,92,0.10);">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1A2C5C;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 40px; height: 40px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px; box-shadow: 0 2px 8px rgba(26,44,92,0.12);">
+        <span style="display: flex; flex-direction: column; line-height: 1.05;">
+          <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 20px;">בינה</span>
+          <span style="font-size: 11px; letter-spacing: 1.5px; color: #8A7A55; font-weight: 600;">ייעוץ ארגוני וחינוכי</span>
+        </span>
+      </a>
+      <div class="bnav-links" style="display: flex; align-items: center; gap: 4px;">
+        <a href="/#vision" class="bnav-link">החזון</a>
+        <a href="/#services" class="bnav-link">שירותים</a>
+        <a href="/#approach" class="bnav-link">השיטה</a>
+        <a href="/models.html" class="bnav-link">המודלים</a>
+        <a href="/#team" class="bnav-link">מי אנחנו</a>
+        <a href="/blog/" class="bnav-link" style="font-weight: 600; color: #1A2C5C; background: rgba(181,137,78,0.14);">מאמרים</a>
+      </div>
+      <a href="/#contact" class="bnav-cta">דברו איתנו</a>
     </nav>
-    <button class="nav-toggle" aria-label="פתיחת תפריט" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+  </header>
 
-<main id="top">
-
-<article class="article">
-  <header class="article-header">
-    <div class="container">
-      <p class="article-eyebrow">ניהול שינוי</p>
-      <h1>8 הצעדים של קוטר - איך מובילים שינוי במוסד חינוכי</h1>
-      <p class="article-meta">
+  <article>
+  <!-- ARTICLE HEADER -->
+  <header style="position: relative; background: linear-gradient(180deg, #142042 0%, #1A2C5C 75%, #1E3266 100%); color: #fff; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 88% 14%, rgba(181,137,78,0.18), transparent 44%); pointer-events: none;"></div>
+    <div style="position: absolute; top: -1px; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #B5894E, #D8B877, #B5894E);"></div>
+    <div style="position: relative; max-width: 800px; margin: 0 auto; padding: 36px 28px 76px; animation: binaFade .8s ease both;">
+      <nav style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 40px;"><a href="/blog/" class="bcrumb">מאמרים</a> <span style="margin: 0 6px;">›</span> <span style="color: #D8B877;">ניהול שינוי</span></nav>
+      <span style="display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; color: #1A2C5C; background: #D8B877; padding: 5px 13px; border-radius: 20px; margin-bottom: 22px;">ניהול שינוי</span>
+      <h1 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.14; letter-spacing: -0.5px; margin: 0 0 22px;">8 הצעדים של קוטר — איך מובילים שינוי במוסד חינוכי</h1>
+      <div style="display: flex; align-items: center; gap: 14px; font-size: 15px; color: rgba(255,255,255,0.72);">
         <span>יוני 2026</span>
-        <span class="dot" aria-hidden="true">·</span>
+        <span style="width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.4);"></span>
         <span>7 דקות קריאה</span>
-      </p>
+      </div>
     </div>
   </header>
 
-  <div class="article-body container">
+  <!-- ARTICLE BODY -->
+  <div style="max-width: 760px; margin: 0 auto; padding: 64px 28px 40px;">
+    <p style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; line-height: 1.65; color: #2A3145; margin: 0 0 40px; font-weight: 500;">שינוי במוסד חינוכי אינו קורה מפני שמישהו הכריז עליו. גם רעיון נכון יכול להיתקע אם אין תחושת דחיפות, אם הצוות לא שותף, אם החזון לא ברור, או אם ההצלחות הראשונות לא מתורגמות להרגלים קבועים. מודל 8 הצעדים של ג'ון קוטר נותן למנהל דרך מסודרת להוביל שינוי בלי לאבד את אמון הצוות והקהילה.</p>
 
-    <p class="article-lede">שינוי במוסד חינוכי אינו קורה מפני שמישהו הכריז עליו. גם רעיון נכון יכול להיתקע אם אין תחושת דחיפות, אם הצוות לא שותף, אם החזון לא ברור, או אם ההצלחות הראשונות לא מתורגמות להרגלים קבועים. מודל 8 הצעדים של ג'ון קוטר נותן למנהל דרך מסודרת להוביל שינוי בלי לאבד את אמון הצוות והקהילה.</p>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">למה שינוי נכשל</h2>
 
-    <h2>למה שינוי נכשל</h2>
-    <p>במוסדות חינוך, שינוי נוגע באנשים, בהרגלים, בסמכות ובזהות. לכן התנגדות לשינוי אינה בהכרח חוסר רצון טוב. לפעמים היא חשש מעומס, פחד מאיבוד שליטה, ניסיון עבר לא מוצלח, או תחושה שהשינוי מגיע מבחוץ ולא מדבר את שפת המוסד.</p>
-    <p>קוטר מציע לחשוב על שינוי כתהליך הדרגתי. לא קופצים ישר לפתרון. בונים קרקע, מרכיבים צוות מוביל, מנסחים כיוון, מתקשרים אותו שוב ושוב, מסירים חסמים, מייצרים הצלחות, ורק אז מעגנים את השינוי בתרבות.</p>
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">במוסדות חינוך, שינוי נוגע באנשים, בהרגלים, בסמכות ובזהות. לכן התנגדות לשינוי אינה בהכרח חוסר רצון טוב. לפעמים היא חשש מעומס, פחד מאיבוד שליטה, ניסיון עבר לא מוצלח, או תחושה שהשינוי מגיע מבחוץ ולא מדבר את שפת המוסד.</p>
 
-    <h2>8 הצעדים של קוטר</h2>
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">קוטר מציע לחשוב על שינוי כתהליך הדרגתי. לא קופצים ישר לפתרון. בונים קרקע, מרכיבים צוות מוביל, מנסחים כיוון, מתקשרים אותו שוב ושוב, מסירים חסמים, מייצרים הצלחות, ורק אז מעגנים את השינוי בתרבות.</p>
 
-    <h3>1. יצירת תחושת דחיפות</h3>
-    <p>לפני שמתחילים שינוי, צריך להסביר למה הוא נדרש עכשיו. לא מתוך לחץ מלאכותי, אלא מתוך תמונת מצב אמיתית: ירידה באמון הורים, שחיקת צוות, קושי תקציבי, פערים לימודיים או עומס ניהולי. כשאנשים מבינים את המחיר של אי-שינוי, קל יותר להתחיל לנוע.</p>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">8 הצעדים של קוטר</h2>
 
-    <h3>2. בניית צוות מוביל</h3>
-    <p>שינוי לא מחזיקים לבד. במוסד חרדי הצוות המוביל יכול לכלול מנהל, רב או דמות רוחנית, רכזים, אנשי הנהלה ולעיתים גם נציגי הורים או קהילה. החשוב הוא שהצוות יהיה אמין, מחויב ובעל יכולת השפעה אמיתית.</p>
-
-    <h3>3. גיבוש חזון ואסטרטגיה</h3>
-    <p>חזון טוב עונה בפשטות על השאלה: איך ייראה המוסד אחרי שהשינוי יצליח. הוא צריך להיות קצר, ברור ומחובר לערכי המוסד. במוסד חינוכי, חזון שאינו מתחבר לשפה הערכית והרוחנית יישאר מסמך יפה ולא יהפוך לעבודה בשטח.</p>
-
-    <h3>4. תקשור החזון</h3>
-    <p>אין די בהודעה אחת לצוות. צריך לחזור על החזון בפגישות, בשיחות אישיות, במסמכי עבודה ובהחלטות היומיות. כשהצוות שומע מסר עקבי ומבין איך הוא משפיע על העבודה שלו, השינוי מתחיל להיות שפה משותפת.</p>
-
-    <h3>5. הסרת חסמים</h3>
-    <p>לפעמים כולם מסכימים עם השינוי, אבל משהו חוסם אותו: נהלים לא ברורים, מחסור בזמן, פערי סמכות, עומס ביורוקרטי או התנגדות של גורם מרכזי. תפקיד המנהל הוא לזהות את החסמים ולהסיר אותם, לא רק לדרוש מהצוות "להסתדר".</p>
-
-    <h3>6. יצירת הצלחות קצרות טווח</h3>
-    <p>שינוי גדול צריך הוכחות קטנות בדרך. הצלחה קצרה יכולה להיות שיפור בתהליך, ירידה בעומס, תגובה טובה מהורים, או צוות שמצליח לעבוד לפי נוהל חדש. ההצלחות האלה מחזקות אמון ומראות שהמאמץ משתלם.</p>
-
-    <h3>7. העמקת השינוי</h3>
-    <p>אחרי הצלחה ראשונה יש נטייה להירגע. קוטר מזהיר שזה שלב מסוכן: אם עוצרים מוקדם מדי, המוסד חוזר להרגלים הישנים. צריך להשתמש בהצלחות כדי להרחיב את המהלך, לתקן מה שלא עבד, ולהעביר את השינוי לעוד תחומים.</p>
-
-    <h3>8. עיגון השינוי בתרבות</h3>
-    <p>שינוי אמיתי מתרחש כשהוא כבר לא "פרויקט", אלא חלק מאיך שהמוסד עובד. הוא נכנס לנהלים, לשיחות צוות, למדידה, לתהליכי קליטה, לסדר היום של ההנהלה ולדרך שבה מקבלים החלטות. רק אז השינוי נשאר גם אחרי שההתלהבות הראשונית יורדת.</p>
-
-    <h2>איך בינה משתמשת במודל</h2>
-    <p>בתהליך ליווי של בינה, מודל קוטר עוזר לנו לאבחן באיזה שלב השינוי תקוע. לפעמים יש חזון אבל אין תחושת דחיפות. לפעמים יש דחיפות אבל אין צוות מוביל. לפעמים יש צוות טוב, אבל החסמים לא הוסרו ולכן השטח לא מצליח להתקדם.</p>
-    <p>העבודה שלנו היא להפוך את השינוי למהלך ניהולי סדור: מטרה ברורה, שותפים נכונים, תהליך תקשור, אבני דרך, הצלחות מדידות ומנגנונים שמכניסים את השינוי לשגרה.</p>
-
-    <h2>סיכום</h2>
-    <p>מודל 8 הצעדים של קוטר מזכיר שמנהיגות שינוי אינה רק החלטה אמיצה. היא תהליך. כשהמנהל בונה דחיפות, רותם אנשים, מסביר את החזון, מסיר חסמים ומייצר הצלחות, הסיכוי שהשינוי יחזיק מעמד גדל משמעותית. במוסד חינוכי, זה ההבדל בין רעיון יפה לבין שינוי שמורגש בכיתה, בצוות ובניהול היומיומי.</p>
-
-  </div>
-
-  <div class="article-cta">
-    <div class="container">
-      <h2>רוצים להוביל שינוי בלי לאבד את הצוות בדרך?</h2>
-      <p>פגישת התאמה ראשונה ללא עלות וללא התחייבות. מסלולי הליווי מוצעים בעלות מסובסדת בהתאם לצרכי המוסד.</p>
-      <a href="/#contact" class="btn btn-primary">דברו איתנו</a>
+    <div style="display: flex; flex-direction: column; gap: 4px; margin: 8px 0 40px;">
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">1</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">יצירת תחושת דחיפות</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">לפני שמתחילים שינוי, צריך להסביר למה הוא נדרש עכשיו. לא מתוך לחץ מלאכותי, אלא מתוך תמונת מצב אמיתית: ירידה באמון הורים, שחיקת צוות, קושי תקציבי, פערים לימודיים או עומס ניהולי. כשאנשים מבינים את המחיר של אי-שינוי, קל יותר להתחיל לנוע.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">2</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">בניית צוות מוביל</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">שינוי לא מחזיקים לבד. במוסד חרדי הצוות המוביל יכול לכלול מנהל, רב או דמות רוחנית, רכזים, אנשי הנהלה ולעיתים גם נציגי הורים או קהילה. החשוב הוא שהצוות יהיה אמין, מחויב ובעל יכולת השפעה אמיתית.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">3</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">גיבוש חזון ואסטרטגיה</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">חזון טוב עונה בפשטות על השאלה: איך ייראה המוסד אחרי שהשינוי יצליח. הוא צריך להיות קצר, ברור ומחובר לערכי המוסד. חזון שאינו מתחבר לשפה הערכית והרוחנית יישאר מסמך יפה ולא יהפוך לעבודה בשטח.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">4</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">תקשור החזון</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">אין די בהודעה אחת לצוות. צריך לחזור על החזון בפגישות, בשיחות אישיות, במסמכי עבודה ובהחלטות היומיות. כשהצוות שומע מסר עקבי ומבין איך הוא משפיע על העבודה שלו, השינוי מתחיל להיות שפה משותפת.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">5</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">הסרת חסמים</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">לפעמים כולם מסכימים עם השינוי, אבל משהו חוסם אותו: נהלים לא ברורים, מחסור בזמן, פערי סמכות, עומס ביורוקרטי או התנגדות של גורם מרכזי. תפקיד המנהל הוא לזהות את החסמים ולהסיר אותם, לא רק לדרוש מהצוות ״להסתדר״.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">6</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">יצירת הצלחות קצרות טווח</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">שינוי גדול צריך הוכחות קטנות בדרך. הצלחה קצרה יכולה להיות שיפור בתהליך, ירידה בעומס, תגובה טובה מהורים, או צוות שמצליח לעבוד לפי נוהל חדש. ההצלחות האלה מחזקות אמון ומראות שהמאמץ משתלם.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">7</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">העמקת השינוי</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">אחרי הצלחה ראשונה יש נטייה להירגע. קוטר מזהיר שזה שלב מסוכן: אם עוצרים מוקדם מדי, המוסד חוזר להרגלים הישנים. צריך להשתמש בהצלחות כדי להרחיב את המהלך, לתקן מה שלא עבד, ולהעביר את השינוי לעוד תחומים.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(26,44,92,0.1);">
+        <span style="flex: none; width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700;">8</span>
+        <div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 4px 0 8px;">עיגון השינוי בתרבות</h3>
+          <p style="font-size: 17px; line-height: 1.78; color: #3F4659; margin: 0;">שינוי אמיתי מתרחש כשהוא כבר לא ״פרויקט״, אלא חלק מאיך שהמוסד עובד. הוא נכנס לנהלים, לשיחות צוות, למדידה, לתהליכי קליטה, לסדר היום של ההנהלה ולדרך שבה מקבלים החלטות. רק אז השינוי נשאר גם אחרי שההתלהבות הראשונית יורדת.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</article>
 
-<section class="section blog-back">
-  <div class="container">
-    <a href="/blog/" class="blog-back-link"><span aria-hidden="true">→</span> חזרה לכל המאמרים</a>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/logo-icon-192.png" alt="" width="40" height="40" />
-      <span class="footer-brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי לציבור החרדי</span>
-      </span>
+    <div style="background: #fff; border-right: 4px solid #B5894E; border-radius: 16px; padding: 34px 36px; margin: 16px 0 40px; box-shadow: 0 14px 40px rgba(26,44,92,0.08);">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #B5894E; margin-bottom: 12px;">הזווית של בינה</div>
+      <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 27px; font-weight: 700; color: #1A2C5C; line-height: 1.3; margin: 0 0 16px;">איך בינה משתמשת במודל</h2>
+      <p style="font-size: 17px; line-height: 1.8; color: #3F4659; margin: 0 0 16px;">בתהליך ליווי של בינה, מודל קוטר עוזר לנו לאבחן באיזה שלב השינוי תקוע. לפעמים יש חזון אבל אין תחושת דחיפות. לפעמים יש דחיפות אבל אין צוות מוביל. לפעמים יש צוות טוב, אבל החסמים לא הוסרו ולכן השטח לא מצליח להתקדם.</p>
+      <p style="font-size: 17px; line-height: 1.8; color: #3F4659; margin: 0 0 16px;">העבודה שלנו היא להפוך את השינוי למהלך ניהולי סדור: מטרה ברורה, שותפים נכונים, תהליך תקשור, אבני דרך, הצלחות מדידות ומנגנונים שמכניסים את השינוי לשגרה.</p>
     </div>
-    <p class="footer-copy">© <span id="year"></span> בינה · כל הזכויות שמורות</p>
-  </div>
-</footer>
 
-<script src="/script.js"></script>
+    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 31px; font-weight: 700; color: #1A2C5C; line-height: 1.25; margin: 40px 0 18px; padding-top: 26px; border-top: 1px solid rgba(26,44,92,0.12);">סיכום</h2>
+
+    <p style="font-size: 18px; line-height: 1.85; color: #3F4659; margin: 0 0 20px;">מודל 8 הצעדים של קוטר מזכיר שמנהיגות שינוי אינה רק החלטה אמיצה — היא תהליך. כשהמנהל בונה דחיפות, רותם אנשים, מסביר את החזון, מסיר חסמים ומייצר הצלחות, הסיכוי שהשינוי יחזיק מעמד גדל משמעותית. במוסד חינוכי, זה ההבדל בין רעיון יפה לבין שינוי שמורגש בכיתה, בצוות ובניהול היומיומי.</p>
+  </div>
+  </article>
+
+  <!-- CTA -->
+  <section style="padding: 76px 28px; background: linear-gradient(160deg, #142042, #1A2C5C); color: #fff; text-align: center; margin-top: 32px;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.2; margin: 0 0 16px;">רוצים להוביל שינוי בלי לאבד את הצוות בדרך?</h2>
+      <p style="font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.8); margin: 0 0 30px; font-weight: 300;">פגישת התאמה ראשונה ללא עלות וללא התחייבות. מסלולי הליווי מוצעים בעלות מסובסדת בהתאם לצרכי המוסד.</p>
+      <a href="/#contact" class="bcta">דברו איתנו</a>
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <div style="max-width: 760px; margin: 0 auto; padding: 40px 28px;">
+    <a href="/blog/" class="bback">→ חזרה לכל המאמרים</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background: #101A36; color: rgba(255,255,255,0.7); padding: 44px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 38px; height: 38px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px;">
+        <span style="font-family: 'Frank Ruhl Libre', serif; font-size: 17px; color: #fff; font-weight: 500;">בינה · ייעוץ ארגוני וחינוכי לציבור החרדי</span>
+      </div>
+      <span style="font-size: 14px;">© <span id="year"></span> בינה · כל הזכויות שמורות</span>
+    </div>
+  </footer>
+
+</div>
+<script>var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

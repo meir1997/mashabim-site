@@ -33,245 +33,293 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  @keyframes binaFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #1A2C5C; color: #fff; }
+  .bnav-link { padding: 9px 13px; font-size: 15px; font-weight: 500; color: #3A4156; text-decoration: none; border-radius: 8px; transition: background .18s, color .18s; }
+  .bnav-link:hover { background: rgba(26,44,92,0.06); color: #1A2C5C; }
+  .bnav-cta { flex: none; padding: 11px 22px; background: #1A2C5C; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 16px rgba(26,44,92,0.22); transition: transform .2s, box-shadow .2s; }
+  .bnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(26,44,92,0.28); }
+  .bcrumb { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .18s; }
+  .bcrumb:hover { color: #D8B877; }
+  .bcta { display: inline-block; padding: 15px 34px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34); transition: transform .2s, box-shadow .2s; }
+  .bcta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bback { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px; transition: background .2s, border-color .2s; }
+  .bback:hover { background: #fff; border-color: #B5894E; }
+  .bcard { transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bfeat { transition: transform .25s, box-shadow .25s; }
+  .bfeat:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(26,44,92,0.12); }
+  .btile { transition: transform .25s, box-shadow .25s; }
+  .btile:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(26,44,92,0.1); }
+  .barena { transition: background .2s; }
+  .barena:hover { background: #22397A; }
+  .bservice { transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .bservice:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); border-color: rgba(181,137,78,0.4); }
+  .bmodelcard { transition: transform .25s, box-shadow .25s; }
+  .bmodelcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bteam { transition: box-shadow .25s; }
+  .bteam:hover { box-shadow: 0 18px 40px rgba(26,44,92,0.1); }
+  .boutline { transition: background .2s, border-color .2s; }
+  .boutline:hover { background: #F7F4EE; border-color: #B5894E; }
+  .bhero-cta { transition: transform .2s, box-shadow .2s; }
+  .bhero-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bhero-ghost { transition: background .2s; }
+  .bhero-ghost:hover { background: rgba(255,255,255,0.16); }
+  .bcontact-row { transition: border-color .2s; }
+  .bcontact-row:hover { border-color: #B5894E; }
+  .binput { font-family: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid rgba(26,44,92,0.18); border-radius: 10px; background: #FAF9F6; color: #1E2230; outline: none; transition: border-color .18s, background .18s; }
+  .binput:focus { border-color: #B5894E; background: #fff; }
+  .bsubmit { margin-top: 22px; width: 100%; padding: 16px; background: #1A2C5C; color: #fff; font-family: inherit; font-size: 17px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 26px rgba(26,44,92,0.24); transition: transform .2s, box-shadow .2s; }
+  .bsubmit:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(26,44,92,0.3); }
+  @media (max-width: 820px) { .bnav-links { display: none !important; } }
+  @media (max-width: 900px) { .bgrid-2, .bgrid-3, .bgrid-4, .bgrid-5, .bgrid-hero, .bgrid-contact { grid-template-columns: 1fr !important; } .bgrid-2 { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 600px) { .bgrid-2 { grid-template-columns: 1fr !important; } }
+</style>
 </head>
 <body>
+<div dir="rtl" lang="he" style="font-family: 'Assistant', system-ui, sans-serif; color: #1E2230; background: #F7F4EE; -webkit-font-smoothing: antialiased; overflow-x: hidden;">
 
-<header class="site-header">
-  <div class="container nav">
-    <a href="/" class="brand" aria-label="בינה - דף הבית">
-      <img class="brand-mark" src="/logo-icon-192.png" alt="" width="44" height="44" />
-      <span class="brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי</span>
-      </span>
-    </a>
-    <nav class="main-nav" aria-label="ניווט ראשי">
-      <a href="/#vision">החזון</a>
-      <a href="/#services">שירותים</a>
-      <a href="/#approach">השיטה</a>
-      <a href="/models.html" class="is-active">המודלים שלנו</a>
-      <a href="/#team">מי אנחנו</a>
-      <a href="/#ethics">אתיקה</a>
-      <a href="/blog/">מאמרים</a>
-      <a href="/#contact" class="nav-cta">דברו איתנו</a>
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(247,244,238,0.88); backdrop-filter: saturate(140%) blur(12px); border-bottom: 1px solid rgba(26,44,92,0.10);">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1A2C5C;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 40px; height: 40px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px; box-shadow: 0 2px 8px rgba(26,44,92,0.12);">
+        <span style="display: flex; flex-direction: column; line-height: 1.05;">
+          <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 20px;">בינה</span>
+          <span style="font-size: 11px; letter-spacing: 1.5px; color: #8A7A55; font-weight: 600;">ייעוץ ארגוני וחינוכי</span>
+        </span>
+      </a>
+      <div class="bnav-links" style="display: flex; align-items: center; gap: 4px;">
+        <a href="/#vision" class="bnav-link">החזון</a>
+        <a href="/#services" class="bnav-link">שירותים</a>
+        <a href="/#approach" class="bnav-link">השיטה</a>
+        <a href="/models.html" class="bnav-link" style="background: rgba(26,44,92,0.06); color: #1A2C5C;">המודלים</a>
+        <a href="/#team" class="bnav-link">מי אנחנו</a>
+        <a href="/blog/" class="bnav-link" style="font-weight: 600; color: #1A2C5C;">מאמרים</a>
+      </div>
+      <a href="/#contact" class="bnav-cta">דברו איתנו</a>
     </nav>
-    <button class="nav-toggle" aria-label="פתיחת תפריט" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+  </header>
 
-<main id="top">
-
-<section class="section blog-hero">
-  <div class="container">
-    <p class="section-eyebrow">המודלים שלנו</p>
-    <h1>כלים פשוטים לשיחה. עמוקים לעבודה.</h1>
-    <p class="lede">שלושת המודלים שלהלן עוזרים לנו להפוך מורכבות ניהולית לתמונה ברורה: מה מצב המוסד, מה נדרש מהמנהל, ואיך מובילים שינוי בלי לאבד את הצוות בדרך.</p>
-  </div>
-</section>
-
-<section id="seven-arenas" class="section arenas">
-  <div class="container">
-    <div class="section-head center">
-      <p class="section-eyebrow">כלי מיפוי</p>
-      <h2>7 הזירות - תמונה מלאה של המוסד.</h2>
-      <p class="section-sub">כלי המיפוי של משרד החינוך, בהתאמה לשפה ולערכים של המגזר החרדי. שבע זירות שמרכיבות יחד את כל פעילות המוסד - ומאפשרות לזהות בדיוק היכן חזקים והיכן צריך לחזק.</p>
+  <!-- HERO -->
+  <section style="position: relative; background: linear-gradient(180deg, #142042 0%, #1A2C5C 70%, #1E3266 100%); color: #fff; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 88% 12%, rgba(181,137,78,0.20), transparent 42%); pointer-events: none;"></div>
+    <div style="position: absolute; top: -1px; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #B5894E, #D8B877, #B5894E);"></div>
+    <div style="position: relative; max-width: 980px; margin: 0 auto; padding: 84px 28px 92px; animation: binaFade .8s ease both;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px;">
+        <span style="width: 30px; height: 1.5px; background: #C9A063;"></span>
+        <span style="font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #D8B877;">המודלים שלנו</span>
+      </div>
+      <h1 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(34px, 5vw, 58px); line-height: 1.1; letter-spacing: -0.5px; margin: 0 0 24px;">כלים פשוטים לשיחה.<br><span style="color: #D8B877;">עמוקים לעבודה.</span></h1>
+      <p style="font-size: clamp(17px, 1.5vw, 20px); line-height: 1.75; color: rgba(255,255,255,0.82); max-width: 680px; margin: 0; font-weight: 300;">שלושת המודלים שלהלן עוזרים לנו להפוך מורכבות ניהולית לתמונה ברורה: מה מצב המוסד, מה נדרש מהמנהל, ואיך מובילים שינוי בלי לאבד את הצוות בדרך.</p>
     </div>
-    <div class="arenas-grid">
-      <article class="arena-card">
-        <span class="arena-num">01</span>
-        <h3>מנהיגות ותרבות</h3>
-        <p>החזון הרוחני של הרב וההנהלה, מתורגם לתהליכי ניהול סדורים ולתרבות בית-מדרשית.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">02</span>
-        <h3>צוות חינוכי</h3>
-        <p>מלמדים, ר&quot;מים ומורות מגובשים סביב רוח המוסד, עם מסוגלות מקצועית ומחויבות ערכית.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">03</span>
-        <h3>הוראה, למידה והערכה</h3>
-        <p>איכות הלימוד, האיזון בין קודש לחול, ושיטות הלימוד וההערכה המתאימות למוסד.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">04</span>
-        <h3>מידות ובין אדם לחברו</h3>
-        <p>עבודת המידות, אקלים תורני בריא, כבוד הדדי ומניעת פגיעה בין תלמידים.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">05</span>
-        <h3>חינוך חברתי וחסד</h3>
-        <p>ערכי החסד, הערבות ההדדית והאחריות לקהילה - מהיסודות החזקים של החינוך החרדי.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">06</span>
-        <h3>הורים וקהילה</h3>
-        <p>הקשר בין המוסד, ההורים, הרבנים והקהילה - ערוצי תקשורת ושמירה על אמון.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">07</span>
-        <h3>סביבות למידה</h3>
-        <p>בית המדרש, הכיתות והתשתיות, לצד מדיניות טכנולוגיה ברורה ברוח המוסד.</p>
-      </article>
-      <a href="/blog/seven-arenas-haredi.html" class="arena-card arena-card-link">
-        <span class="arena-cta-label">מאמר עומק</span>
-        <h3>קראו עוד על 7 הזירות <span aria-hidden="true">←</span></h3>
-        <p>כיצד מתרגמים את המיפוי לתוכנית עבודה ולתקציב מדויק.</p>
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="manager-roles" class="section arenas manager-roles">
-  <div class="container">
-    <div class="section-head center">
-      <p class="section-eyebrow">מודל ניהולי</p>
-      <h2>10 תפקידי המנהל לפי מינצברג.</h2>
-      <p class="section-sub">מינצברג הראה שמנהל אינו פועל בתפקיד אחד, אלא נע בין עשרה תפקידים יומיומיים: בין אנשים, מידע והחלטות. במוסד חינוכי חרדי, ההבנה הזו עוזרת למנהל לזהות איפה הוא נדרש להוביל, איפה להקשיב, ואיפה לקבל החלטה.</p>
+  <!-- MODEL 1: 7 ARENAS -->
+  <section style="padding: 96px 28px; background: #F7F4EE;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 800px; margin-bottom: 48px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">כלי מיפוי</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.14; margin: 0 0 16px; color: #1A2C5C;">7 הזירות — תמונה מלאה של המוסד.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">כלי המיפוי של משרד החינוך, בהתאמה לשפה ולערכים של המגזר החרדי. שבע זירות שמרכיבות יחד את כל פעילות המוסד — ומאפשרות לזהות בדיוק היכן חזקים והיכן צריך לחזק.</p>
+      </div>
+      <div class="bgrid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;">
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">01</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">מנהיגות ותרבות</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">החזון הרוחני של הרב וההנהלה, מתורגם לתהליכי ניהול סדורים ולתרבות בית-מדרשית.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">02</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">צוות חינוכי</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">מלמדים, ר״מים ומורות מגובשים סביב רוח המוסד, עם מסוגלות מקצועית ומחויבות ערכית.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">03</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">הוראה, למידה והערכה</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">איכות הלימוד, האיזון בין קודש לחול, ושיטות הלימוד וההערכה המתאימות למוסד.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">04</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">מידות ובין אדם לחברו</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">עבודת המידות, אקלים תורני בריא, כבוד הדדי ומניעת פגיעה בין תלמידים.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">05</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">חינוך חברתי וחסד</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">ערכי החסד, הערבות ההדדית והאחריות לקהילה — מהיסודות החזקים של החינוך החרדי.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">06</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">הורים וקהילה</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">הקשר בין המוסד, ההורים, הרבנים והקהילה — ערוצי תקשורת ושמירה על אמון.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">07</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">סביבות למידה</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">בית המדרש, הכיתות והתשתיות, לצד מדיניות טכנולוגיה ברורה ברוח המוסד.</p>
+        </div>
+        <a href="/blog/seven-arenas-haredi.html" class="barena" style="background: #1A2C5C; color: #fff; border-radius: 16px; padding: 24px 22px; display: flex; flex-direction: column; justify-content: center; text-decoration: none;">
+          <span style="font-size: 13px; color: #D8B877; font-weight: 600; margin-bottom: 6px;">מאמר עומק</span>
+          <span style="font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; line-height: 1.3;">קראו עוד על 7 הזירות ←</span>
+        </a>
+      </div>
     </div>
-    <div class="arenas-grid">
-      <article class="arena-card">
-        <span class="arena-num">01</span>
-        <h3>דמות ייצוגית</h3>
-        <p>ייצוג המוסד מול הורים, רבנים, קהילה ורשויות - בשפה מכובדת שמחזיקה את רוח המוסד.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">02</span>
-        <h3>מנהיג</h3>
-        <p>הובלת הצוות, חיזוק מחויבות, בניית אמון ותרגום החזון החינוכי לעבודה יומיומית.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">03</span>
-        <h3>מקשר</h3>
-        <p>בניית קשרים עם גורמי חוץ, תורמים, פיקוח, עירייה ושותפים שיכולים לקדם את המוסד.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">04</span>
-        <h3>מנטר מידע</h3>
-        <p>איסוף תמונת מצב מהשטח: תלמידים, צוות, תקציבים, הורים ואקלים מוסדי.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">05</span>
-        <h3>מפיץ מידע</h3>
-        <p>העברת מידע נכון לצוות ולהנהלה, בזמן הנכון, כדי למנוע בלבול ולייצר פעולה מתואמת.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">06</span>
-        <h3>דובר</h3>
-        <p>הצגת צרכי המוסד כלפי חוץ: בקשות תקציב, עדכונים, הסברה ושמירה על אמון ציבורי.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">07</span>
-        <h3>יזם</h3>
-        <p>זיהוי הזדמנויות לשיפור, פתיחת תוכניות חדשות והובלת תהליכים לפני שהבעיה מחייבת שינוי.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">08</span>
-        <h3>מטפל בהפרעות</h3>
-        <p>התמודדות עם משברים, מתחים וחריגות מהשגרה בלי לאבד את הליבה החינוכית.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">09</span>
-        <h3>מקצה משאבים</h3>
-        <p>חלוקת זמן, תקציב, כוח אדם ותשומת לב ניהולית לפי סדרי עדיפויות ברורים.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">10</span>
-        <h3>נושא ונותן</h3>
-        <p>ניהול שיח עם צוות, ספקים, רשויות והורים כדי להגיע להסכמות שמשרתות את המוסד.</p>
-      </article>
-      <a href="/blog/mintzberg-manager-roles.html" class="arena-card arena-card-link">
-        <span class="arena-cta-label">מאמר עומק</span>
-        <h3>קראו עוד על 10 התפקידים <span aria-hidden="true">←</span></h3>
-        <p>שלוש קבוצות התפקידים של מינצברג, והתרגום שלהן לעבודת מנהל מוסד חינוכי.</p>
-      </a>
+  </section>
+
+  <!-- MODEL 2: 10 ROLES -->
+  <section style="padding: 96px 28px; background: #fff;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 800px; margin-bottom: 48px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">מודל ניהולי</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.14; margin: 0 0 16px; color: #1A2C5C;">10 תפקידי המנהל לפי מינצברג.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">מינצברג הראה שמנהל אינו פועל בתפקיד אחד, אלא נע בין עשרה תפקידים יומיומיים: בין אנשים, מידע והחלטות. במוסד חינוכי חרדי, ההבנה הזו עוזרת למנהל לזהות איפה הוא נדרש להוביל, איפה להקשיב, ואיפה לקבל החלטה.</p>
+      </div>
+      <div class="bgrid-5" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">01</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">דמות ייצוגית</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">ייצוג המוסד מול הורים, רבנים, קהילה ורשויות — בשפה מכובדת שמחזיקה את רוח המוסד.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">02</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">מנהיג</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">הובלת הצוות, חיזוק מחויבות, בניית אמון ותרגום החזון החינוכי לעבודה יומיומית.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">03</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">מקשר</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">בניית קשרים עם גורמי חוץ, תורמים, פיקוח, עירייה ושותפים שיכולים לקדם את המוסד.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">04</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">מנטר מידע</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">איסוף תמונת מצב מהשטח: תלמידים, צוות, תקציבים, הורים ואקלים מוסדי.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">05</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">מפיץ מידע</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">העברת מידע נכון לצוות ולהנהלה, בזמן הנכון, כדי למנוע בלבול ולייצר פעולה מתואמת.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">06</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">דובר</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">הצגת צרכי המוסד כלפי חוץ: בקשות תקציב, עדכונים, הסברה ושמירה על אמון ציבורי.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">07</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">יזם</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">זיהוי הזדמנויות לשיפור, פתיחת תוכניות חדשות והובלת תהליכים לפני שהבעיה מחייבת שינוי.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">08</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">מטפל בהפרעות</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">התמודדות עם משברים, מתחים וחריגות מהשגרה בלי לאבד את הליבה החינוכית.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">09</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">מקצה משאבים</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">חלוקת זמן, תקציב, כוח אדם ותשומת לב ניהולית לפי סדרי עדיפויות ברורים.</p>
+        </div>
+        <div class="btile" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.07); border-radius: 14px; padding: 22px 18px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 900; color: #C9A063; line-height: 1; margin-bottom: 12px;">10</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #1A2C5C; margin: 0 0 7px;">נושא ונותן</h3>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A6072; margin: 0;">ניהול שיח עם צוות, ספקים, רשויות והורים כדי להגיע להסכמות שמשרתות את המוסד.</p>
+        </div>
+      </div>
+      <a href="/blog/mintzberg-manager-roles.html" class="boutline" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px;">קראו עוד על 10 התפקידים ←</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="kotter-change" class="section arenas kotter-change">
-  <div class="container">
-    <div class="section-head center">
-      <p class="section-eyebrow">ניהול שינוי</p>
-      <h2>8 הצעדים של קוטר להובלת שינוי.</h2>
-      <p class="section-sub">מודל קוטר מסייע להפוך שינוי מרעיון טוב לתהליך שמחזיק מעמד. במוסד חינוכי, הוא נותן למנהל דרך לבנות דחיפות, לרתום שותפים, לנסח חזון, לייצר הצלחות קצרות ולבסס שינוי אמיתי בשגרה.</p>
+  <!-- MODEL 3: 8 STEPS -->
+  <section style="padding: 96px 28px; background: #F7F4EE;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 800px; margin-bottom: 48px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">ניהול שינוי</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.14; margin: 0 0 16px; color: #1A2C5C;">8 הצעדים של קוטר להובלת שינוי.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">מודל קוטר מסייע להפוך שינוי מרעיון טוב לתהליך שמחזיק מעמד. במוסד חינוכי, הוא נותן למנהל דרך לבנות דחיפות, לרתום שותפים, לנסח חזון, לייצר הצלחות קצרות ולבסס שינוי אמיתי בשגרה.</p>
+      </div>
+      <div class="bgrid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;">
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">01</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">יצירת תחושת דחיפות</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">להראות למה השינוי נחוץ עכשיו, ומה יקרה אם המוסד ימשיך להתנהל באותה צורה.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">02</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">בניית צוות מוביל</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">לרכז סביב המהלך הנהלה, רבנים, אנשי צוות ושותפים שיש להם אמון והשפעה.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">03</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">גיבוש חזון</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">להגדיר לאן רוצים להגיע, כך שהשינוי יהיה מובן, מדויק ומחובר לערכי המוסד.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">04</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">תקשור החזון</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">לחזור על המסר בשפה פשוטה וברורה, עד שהצוות והקהילה יודעים להסביר אותו בעצמם.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">05</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">הסרת חסמים</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">לטפל בהתנגדויות, עומסים, נהלים לא ברורים או פערי סמכות שמונעים התקדמות.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">06</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">הצלחות קצרות טווח</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">לייצר הישגים מהירים שמראים שהמהלך עובד, ומחזקים את האמון של הצוות.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">07</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">העמקת השינוי</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">לא לעצור אחרי ההצלחה הראשונה, אלא להשתמש בה כדי להרחיב ולדייק את התהליך.</p>
+        </div>
+        <div class="btile" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 16px; padding: 24px 22px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 900; color: #E0CFA9; line-height: 1; margin-bottom: 14px;">08</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: #1A2C5C; margin: 0 0 8px;">עיגון בתרבות</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5A6072; margin: 0;">להפוך את השינוי להרגל מוסדי: בנהלים, בשפה, במדידה ובדרך שבה מקבלים החלטות.</p>
+        </div>
+      </div>
+      <a href="/blog/kotter-change-model.html" class="boutline" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px;">קראו עוד על 8 הצעדים ←</a>
     </div>
-    <div class="arenas-grid">
-      <article class="arena-card">
-        <span class="arena-num">01</span>
-        <h3>יצירת תחושת דחיפות</h3>
-        <p>להראות למה השינוי נחוץ עכשיו, ומה יקרה אם המוסד ימשיך להתנהל באותה צורה.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">02</span>
-        <h3>בניית צוות מוביל</h3>
-        <p>לרכז סביב המהלך הנהלה, רבנים, אנשי צוות ושותפים שיש להם אמון והשפעה.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">03</span>
-        <h3>גיבוש חזון</h3>
-        <p>להגדיר לאן רוצים להגיע, כך שהשינוי יהיה מובן, מדויק ומחובר לערכי המוסד.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">04</span>
-        <h3>תקשור החזון</h3>
-        <p>לחזור על המסר בשפה פשוטה וברורה, עד שהצוות והקהילה יודעים להסביר אותו בעצמם.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">05</span>
-        <h3>הסרת חסמים</h3>
-        <p>לטפל בהתנגדויות, עומסים, נהלים לא ברורים או פערי סמכות שמונעים התקדמות.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">06</span>
-        <h3>הצלחות קצרות טווח</h3>
-        <p>לייצר הישגים מהירים שמראים שהמהלך עובד, ומחזקים את האמון של הצוות.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">07</span>
-        <h3>העמקת השינוי</h3>
-        <p>לא לעצור אחרי ההצלחה הראשונה, אלא להשתמש בה כדי להרחיב ולדייק את התהליך.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-num">08</span>
-        <h3>עיגון בתרבות</h3>
-        <p>להפוך את השינוי להרגל מוסדי: בנהלים, בשפה, במדידה ובדרך שבה מקבלים החלטות.</p>
-      </article>
-      <a href="/blog/kotter-change-model.html" class="arena-card arena-card-link">
-        <span class="arena-cta-label">מאמר עומק</span>
-        <h3>קראו עוד על 8 הצעדים <span aria-hidden="true">←</span></h3>
-        <p>מודל קוטר, עם התאמה להובלת שינוי במוסדות חינוך חרדיים.</p>
-      </a>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 84px 28px; background: linear-gradient(160deg, #142042, #1A2C5C); color: #fff; text-align: center;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.18; margin: 0 0 16px;">רוצים להבין איזה מודל מתאים למוסד שלכם?</h2>
+      <p style="font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.8); margin: 0 0 30px; font-weight: 300;">פגישת התאמה ראשונה ללא עלות וללא התחייבות. מסלולי הליווי מוצעים בעלות מסובסדת בהתאם לצרכי המוסד.</p>
+      <a href="/#contact" class="bcta">דברו איתנו</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="article-cta">
-  <div class="container">
-    <h2>רוצים להבין איזה מודל מתאים למוסד שלכם?</h2>
-    <p>פגישת התאמה ראשונה ללא עלות וללא התחייבות. מסלולי הליווי מוצעים בעלות מסובסדת בהתאם לצרכי המוסד.</p>
-    <a href="/#contact" class="btn btn-primary">דברו איתנו</a>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/logo-icon-192.png" alt="" width="40" height="40" />
-      <span class="footer-brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי לציבור החרדי</span>
-      </span>
+  <!-- FOOTER -->
+  <footer style="background: #101A36; color: rgba(255,255,255,0.7); padding: 44px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 38px; height: 38px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px;">
+        <span style="font-family: 'Frank Ruhl Libre', serif; font-size: 17px; color: #fff; font-weight: 500;">בינה · ייעוץ ארגוני וחינוכי לציבור החרדי</span>
+      </div>
+      <span style="font-size: 14px;">© <span id="year"></span> בינה · כל הזכויות שמורות</span>
     </div>
-    <p class="footer-copy">© <span id="year"></span> בינה · כל הזכויות שמורות</p>
-  </div>
-</footer>
+  </footer>
 
-<script src="/script.js"></script>
+</div>
+<script>var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

@@ -67,364 +67,465 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  @keyframes binaFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #1A2C5C; color: #fff; }
+  .bnav-link { padding: 9px 13px; font-size: 15px; font-weight: 500; color: #3A4156; text-decoration: none; border-radius: 8px; transition: background .18s, color .18s; }
+  .bnav-link:hover { background: rgba(26,44,92,0.06); color: #1A2C5C; }
+  .bnav-cta { flex: none; padding: 11px 22px; background: #1A2C5C; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 16px rgba(26,44,92,0.22); transition: transform .2s, box-shadow .2s; }
+  .bnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(26,44,92,0.28); }
+  .bcrumb { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .18s; }
+  .bcrumb:hover { color: #D8B877; }
+  .bcta { display: inline-block; padding: 15px 34px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34); transition: transform .2s, box-shadow .2s; }
+  .bcta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bback { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 12px 22px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px; transition: background .2s, border-color .2s; }
+  .bback:hover { background: #fff; border-color: #B5894E; }
+  .bcard { transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bfeat { transition: transform .25s, box-shadow .25s; }
+  .bfeat:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(26,44,92,0.12); }
+  .btile { transition: transform .25s, box-shadow .25s; }
+  .btile:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(26,44,92,0.1); }
+  .barena { transition: background .2s; }
+  .barena:hover { background: #22397A; }
+  .bservice { transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .bservice:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); border-color: rgba(181,137,78,0.4); }
+  .bmodelcard { transition: transform .25s, box-shadow .25s; }
+  .bmodelcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(26,44,92,0.12); }
+  .bteam { transition: box-shadow .25s; }
+  .bteam:hover { box-shadow: 0 18px 40px rgba(26,44,92,0.1); }
+  .boutline { transition: background .2s, border-color .2s; }
+  .boutline:hover { background: #F7F4EE; border-color: #B5894E; }
+  .bhero-cta { transition: transform .2s, box-shadow .2s; }
+  .bhero-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(181,137,78,0.42); }
+  .bhero-ghost { transition: background .2s; }
+  .bhero-ghost:hover { background: rgba(255,255,255,0.16); }
+  .bcontact-row { transition: border-color .2s; }
+  .bcontact-row:hover { border-color: #B5894E; }
+  .binput { font-family: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid rgba(26,44,92,0.18); border-radius: 10px; background: #FAF9F6; color: #1E2230; outline: none; transition: border-color .18s, background .18s; }
+  .binput:focus { border-color: #B5894E; background: #fff; }
+  .bsubmit { margin-top: 22px; width: 100%; padding: 16px; background: #1A2C5C; color: #fff; font-family: inherit; font-size: 17px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 26px rgba(26,44,92,0.24); transition: transform .2s, box-shadow .2s; }
+  .bsubmit:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(26,44,92,0.3); }
+  @media (max-width: 820px) { .bnav-links { display: none !important; } }
+  @media (max-width: 900px) { .bgrid-2, .bgrid-3, .bgrid-4, .bgrid-5, .bgrid-hero, .bgrid-contact { grid-template-columns: 1fr !important; } .bgrid-2 { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 600px) { .bgrid-2 { grid-template-columns: 1fr !important; } }
+</style>
 </head>
 <body>
+<div dir="rtl" lang="he" style="font-family: 'Assistant', system-ui, sans-serif; color: #1E2230; background: #F7F4EE; -webkit-font-smoothing: antialiased; overflow-x: hidden;">
 
-<header class="site-header">
-  <div class="container nav">
-    <a href="#top" class="brand" aria-label="בינה - דף הבית">
-      <img class="brand-mark" src="logo-icon-192.png" alt="" width="44" height="44" />
-      <span class="brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי</span>
-      </span>
-    </a>
-    <nav class="main-nav" aria-label="ניווט ראשי">
-      <a href="#vision">החזון</a>
-      <a href="#services">שירותים</a>
-      <a href="#approach">השיטה</a>
-      <a href="#models">המודלים שלנו</a>
-      <a href="#team">מי אנחנו</a>
-      <a href="#ethics">אתיקה</a>
-      <a href="/blog/">מאמרים</a>
-      <a href="#contact" class="nav-cta">דברו איתנו</a>
-    </nav>
-    <button class="nav-toggle" aria-label="פתיחת תפריט" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<main id="top">
-
-<section class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="container hero-inner">
-    <p class="eyebrow">עמותה לייעוץ וליווי לציבור החרדי</p>
-    <h1>בונים מערכות חינוך<br/><span class="accent">חזקות, יציבות ומקצועיות.</span></h1>
-    <p class="lede">
-      בינה היא עמותה מקצועית המלווה מנהלי מוסדות חינוך במגזר החרדי,
-      בייעוץ ארגוני, חיבור למקורות מימון ובניית מתודה ניהולית סדורה לטווח הארוך.
-      מטרתנו היא לקדם את איכות החינוך, להעצים את השדרה הניהולית והפדגוגית,
-      ולאפשר למנהלים להוביל מערכות יציבות ומיטיבות יותר.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">בקשת ליווי</a>
-      <a href="#services" class="btn btn-ghost">למה שירותי הליווי שלנו</a>
-    </div>
-    <ul class="hero-points" role="list">
-      <li><strong>ליווי שנתי צמוד</strong><span>ולא תוכנית נקודתית</span></li>
-      <li><strong>אמון המגזר</strong><span>שפה, רוח וערכים מותאמים</span></li>
-      <li><strong>מיצוי תקציבי גפן</strong><span>וגורמי מימון נוספים</span></li>
-    </ul>
-  </div>
-</section>
-
-<section id="vision" class="section vision">
-  <div class="container two-col">
-    <div class="col-text">
-      <p class="section-eyebrow">החזון</p>
-      <h2>מקצועיות. אמון. שפה אחת.</h2>
-      <p>
-        החינוך החרדי, ובפרט עולם תלמודי התורה ובתי הספר, צמא לליווי ארגוני אמיתי.
-        גופים ממשלתיים מציעים סיוע, אך לרוב הם רחוקים מהבנת המאפיינים הייחודיים של מנהלי המוסדות
-        ואינם זוכים לאמונם המלא. מנגד, תקציבים נכבדים, ובראשם תוכנית גפן, הולכים לאיבוד
-        רק משום שאין מי שיתרגם בירוקרטיה מורכבת לעשייה בשטח.
-      </p>
-      <p>
-        בינה נוסדה כדי לסגור בדיוק את הפער הזה: גוף עצמאי, חוץ-ממסדי,
-        שמדבר את שפת המגזר באופן טבעי, ובו-זמנית מביא איתו מתודה מקצועית,
-        סטנדרט עבודה גבוה ויכולת מוכחת למיצוי משאבים.
-      </p>
-      <p>
-        כעמותה, השליחות שלנו היא לקדם ולשפר את פני השטח החינוכיים:
-        לחזק את מוסדות החינוך מבפנים, לסייע למנהלים לפעול מתוך בהירות, יציבות ואחריות,
-        וליצור תשתיות ניהול חזקות שיעניקו לתלמידים את המעטפת הטובה ביותר לאורך זמן.
-      </p>
-    </div>
-    <div class="col-card">
-      <div class="quote-card">
-        <p class="quote-mark" aria-hidden="true">״</p>
-        <blockquote>
-          השאיפה היא לבנות מנגנון שמאפשר למנהל הטוב להתפנות לליבת התפקיד שלו, החינוך,
-          בידיעה שמישהו אחראי מלווה אותו בכל מה שמסביב.
-        </blockquote>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="services" class="section services">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-eyebrow">שירותים</p>
-      <h2>שלוש זרועות עבודה. ליווי אחד לאורך הדרך.</h2>
-      <p class="section-sub">העמותה פועלת במודל מקצועי ושקוף: מסלולי ליווי ברורים, מתודה אחידה והתאמה לצרכי המוסד.</p>
-    </div>
-    <div class="cards">
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-6h6v6"/></svg>
-        </div>
-        <h3>ייעוץ ארגוני למוסדות</h3>
-        <p>מיפוי מבני, הגדרת תפקידים, נהלי עבודה, מערכות בקרה והקמת תשתיות ניהול שרודות גם אחרי שאנחנו יוצאים מהשטח.</p>
-        <ul class="card-list">
-          <li>אבחון ארגוני מקיף</li>
-          <li>בניית מבנה ארגוני ונהלים</li>
-          <li>עבודה מול הוועד והרבנים</li>
-        </ul>
-      </article>
-
-      <article class="card card-feature">
-        <div class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
-        </div>
-        <h3>ליווי מנהלים</h3>
-        <p>תוכנית ליווי שנתית צמודה למנהל המוסד: פגישות סדורות, פתרון מצבי משבר, פיתוח חשיבה אסטרטגית וגיבוי בקבלת החלטות.</p>
-        <ul class="card-list">
-          <li>פגישות שבועיות / דו-שבועיות</li>
-          <li>זמינות בין הפגישות</li>
-          <li>בניית תוכנית עבודה שנתית</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3>מיצוי משאבים ותקציבים</h3>
-        <p>חיבור המוסד לתקציבי תוכנית גפן, רשויות מקומיות, קרנות ועמותות. תרגום הבירוקרטיה לכסף שבאמת מגיע למוסד.</p>
-        <ul class="card-list">
-          <li>בדיקת זכאויות וכתיבת בקשות</li>
-          <li>ליווי מול רשויות וגופי מימון</li>
-          <li>בקרת ביצוע ודיווחים</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="approach" class="section approach">
-  <div class="container">
-    <div class="section-head center">
-      <p class="section-eyebrow">השיטה</p>
-      <h2>מתודה סדורה. עוגנים ברורים. אחריות לתוצאה.</h2>
-      <p class="section-sub">לא תוכנית במגירה ולא הרצאת השראה. תהליך מובנה, נמדד, עם נקודות החלטה ברורות לאורך הדרך.</p>
-    </div>
-    <ol class="steps" role="list">
-      <li>
-        <span class="step-num">01</span>
-        <h3>אבחון</h3>
-        <p>שיחות עומק עם ההנהלה, הצוות והרבנים. מיפוי מצב קיים: ארגוני, תקציבי וחינוכי.</p>
-      </li>
-      <li>
-        <span class="step-num">02</span>
-        <h3>תוכנית עבודה</h3>
-        <p>גיבוש מסמך יעדים, סדרי עדיפויות, לוחות זמנים ותקציב, בהתאמה למציאות של המוסד.</p>
-      </li>
-      <li>
-        <span class="step-num">03</span>
-        <h3>ליווי שוטף</h3>
-        <p>פגישות קבועות, פתרון אתגרים תוך כדי תנועה, חיבור לגורמי מימון וטיפול בנקודות התורפה.</p>
-      </li>
-      <li>
-        <span class="step-num">04</span>
-        <h3>הטמעה ועצמאות</h3>
-        <p>העברת ידע וכלים לצוות הניהולי, כך שהמוסד יוכל להמשיך לפעול חזק גם בסיום הליווי.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section id="models" class="section arenas models-preview">
-  <div class="container">
-    <div class="section-head center">
-      <p class="section-eyebrow">המודלים שלנו</p>
-      <h2>שלושה כלים שעושים סדר במורכבות.</h2>
-      <p class="section-sub">אנחנו עובדים עם מודלים פשוטים להסבר ועמוקים ליישום: מיפוי מצב המוסד, הבנת תפקיד המנהל, והובלת שינוי שמחזיק לאורך זמן.</p>
-    </div>
-    <div class="cards">
-      <article class="arena-card">
-        <span class="arena-cta-label">מיפוי מוסדי</span>
-        <h3>7 הזירות</h3>
-        <p>מסגרת לאבחון מלא של מוסד חינוכי: הנהגה, צוות, למידה, אקלים, קהילה ותשתיות - בהתאמה לשפת המגזר.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-cta-label">ניהול יומיומי</span>
-        <h3>10 תפקידי המנהל</h3>
-        <p>המודל של מינצברג עוזר להבין את עבודת המנהל דרך תפקידי הנהגה, מידע וקבלת החלטות.</p>
-      </article>
-      <article class="arena-card">
-        <span class="arena-cta-label">ניהול שינוי</span>
-        <h3>8 הצעדים של קוטר</h3>
-        <p>דרך מובנית להפוך שינוי מרעיון טוב לתהליך: דחיפות, שותפים, חזון, הצלחות קצרות ועיגון בתרבות.</p>
-      </article>
-      <a href="/models.html" class="arena-card arena-card-link">
-        <span class="arena-cta-label">כל המודלים</span>
-        <h3>לעמוד המודלים שלנו <span aria-hidden="true">←</span></h3>
-        <p>הסבר מרוכז על שלושת המודלים, עם קישורים למאמרים המלאים וליישום בתהליך הליווי.</p>
+  <!-- NAV -->
+  <header id="top" style="position: sticky; top: 0; z-index: 50; background: rgba(247,244,238,0.88); backdrop-filter: saturate(140%) blur(12px); border-bottom: 1px solid rgba(26,44,92,0.10);">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1A2C5C;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 40px; height: 40px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px; box-shadow: 0 2px 8px rgba(26,44,92,0.12);">
+        <span style="display: flex; flex-direction: column; line-height: 1.05;">
+          <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 20px;">בינה</span>
+          <span style="font-size: 11px; letter-spacing: 1.5px; color: #8A7A55; font-weight: 600;">ייעוץ ארגוני וחינוכי</span>
+        </span>
       </a>
-    </div>
-  </div>
-</section>
+      <div class="bnav-links" style="display: flex; align-items: center; gap: 4px;">
+        <a href="#vision" class="bnav-link">החזון</a>
+        <a href="#services" class="bnav-link">שירותים</a>
+        <a href="#approach" class="bnav-link">השיטה</a>
+        <a href="#models" class="bnav-link">המודלים</a>
+        <a href="#team" class="bnav-link">מי אנחנו</a>
+        <a href="/blog/" class="bnav-link">מאמרים</a>
+      </div>
+      <a href="#contact" class="bnav-cta">דברו איתנו</a>
+    </nav>
+  </header>
 
-<section id="team" class="section team">
-  <div class="container">
-    <div class="section-head center">
-      <p class="section-eyebrow">מי אנחנו</p>
-      <h2>הצוות שמאחורי בינה.</h2>
-      <p class="section-sub">צוות מוביל, כל אחד עם נסיון וזווית מקצועית משלימה. יחד אנחנו מביאים שילוב של עומק תורני, שפה ארגונית ומקצועיות תפעולית.</p>
+  <!-- HERO -->
+  <section style="position: relative; background: linear-gradient(180deg, #142042 0%, #1A2C5C 60%, #1E3266 100%); color: #fff; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 88% 12%, rgba(181,137,78,0.20), transparent 42%), radial-gradient(circle at 6% 90%, rgba(255,255,255,0.06), transparent 40%); pointer-events: none;"></div>
+    <div style="position: absolute; top: -1px; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #B5894E, #D8B877, #B5894E);"></div>
+    <div class="bgrid-hero" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 92px 28px 104px; display: grid; grid-template-columns: 1.25fr 0.85fr; gap: 56px; align-items: center;">
+      <div style="animation: binaFade .8s ease both;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 26px;">
+          <span style="width: 30px; height: 1.5px; background: #C9A063;"></span>
+          <span style="font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #D8B877;">עמותה לייעוץ וליווי לציבור החרדי</span>
+        </div>
+        <h1 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(38px, 5.4vw, 66px); line-height: 1.08; letter-spacing: -0.5px; margin: 0 0 26px;">בונים מערכות חינוך<br><span style="color: #D8B877;">חזקות, יציבות ומקצועיות.</span></h1>
+        <p style="font-size: clamp(17px, 1.5vw, 20px); line-height: 1.75; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 0 36px; font-weight: 300;">בינה היא עמותה מקצועית המלווה מנהלי מוסדות חינוך במגזר החרדי בייעוץ ארגוני, חיבור למקורות מימון ובניית מתודה ניהולית סדורה לטווח הארוך — כדי לקדם את איכות החינוך ולהעצים את השדרה הניהולית והפדגוגית.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a href="#contact" class="bhero-cta" style="padding: 15px 30px; background: #B5894E; color: #1A1206; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 11px; box-shadow: 0 10px 26px rgba(181,137,78,0.34);">בקשת ליווי</a>
+          <a href="#services" class="bhero-ghost" style="padding: 15px 30px; background: rgba(255,255,255,0.08); color: #fff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 11px; border: 1px solid rgba(255,255,255,0.22);">שירותי הליווי שלנו ←</a>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; animation: binaFade 1s ease .15s both;">
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 22px 24px; backdrop-filter: blur(4px);">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #D8B877; margin-bottom: 6px;">ליווי שנתי צמוד</div>
+          <div style="font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78);">מודל ליווי לאורך כל השנה — ולא תוכנית נקודתית.</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 22px 24px; backdrop-filter: blur(4px);">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #D8B877; margin-bottom: 6px;">אמון המגזר</div>
+          <div style="font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78);">שפה, רוח וערכים מותאמים לעולם החינוך החרדי.</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 22px 24px; backdrop-filter: blur(4px);">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #D8B877; margin-bottom: 6px;">מיצוי תקציבי גפן</div>
+          <div style="font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78);">חיבור לתוכנית גפן ולגורמי מימון נוספים.</div>
+        </div>
+      </div>
     </div>
-    <div class="team-grid">
-      <article class="team-card">
-        <img class="team-avatar team-photo" src="team-shneor.jpg" alt="שניאור רוכברגר" width="76" height="76" />
-        <h3>שניאור רוכברגר</h3>
-        <p class="team-role">מומחה לחינוך ומנהיגות</p>
-        <p class="team-bio">ממונה על החינוך החברתי-ערכי במחוז החרדי במשרד החינוך, בוגר מכון מנדל למנהיגות, מנהל תנועת הנוער "אחווה" ומרצה לתואר שני באוניברסיטת חיפה. מומחה בהנעת צוותים ובחינוך ערכי.</p>
-      </article>
-      <article class="team-card">
-        <img class="team-avatar team-photo" src="team-meir.jpg" alt="מאיר כהן" width="76" height="76" />
-        <h3>מאיר כהן</h3>
-        <p class="team-role">מוביל תהליכים וחדשנות</p>
-        <p class="team-bio">משלב רקע בפסיכולוגיה ובעולם הפיננסי עם תשוקה להובלת תהליכים ולשילוב טכנולוגיה ככלי לקידום. מסייע למוסדות להפוך חזון לתהליכים מעשיים, נמדדים, ולייצר שינוי שמורגש בשטח.</p>
-      </article>
-      <article class="team-card">
-        <img class="team-avatar team-photo" src="team-yehuda.jpg" alt="יהודה נוימן" width="76" height="76" />
-        <h3>יהודה נוימן</h3>
-        <p class="team-role">מוביל תהליכים מורכבים</p>
-        <p class="team-bio">בעל ניסיון בהובלת תהליכים מורכבים, חיבור בין גורמים שונים ובניית מהלכים ישימים בתוך מציאות ארגונית רגישה. מסייע למנהלים לפרק אתגר גדול לשלבים ברורים, לרתום שותפים, ולהתקדם באופן מדוד עד לתוצאה בשטח.</p>
-      </article>
-      <article class="team-card">
-        <img class="team-avatar team-photo" src="team-yehoshua.jpg" alt="יהושע בניאל" width="76" height="76" />
-        <h3>יהושע בניאל</h3>
-        <p class="team-role">יועץ ארגוני למערכות חינוך</p>
-        <p class="team-bio">בעל M.Ed, עם מעל 15 שנות ניסיון בהוראה, ניהול תיכון וליווי מוסדות מטעם הפיקוח. מסייע למנהלים להפוך מורכבות לתהליך ברור, ולחבר בין חזון, יעדים ומשאבים לעשייה חיה.</p>
-      </article>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="why" class="section why">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-eyebrow">למה אנחנו</p>
-      <h2>מקצועיות שמדברת את שפת המגזר.</h2>
+  <!-- VISION -->
+  <section id="vision" style="padding: 104px 28px; background: #F7F4EE;">
+    <div style="max-width: 980px; margin: 0 auto;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+        <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">החזון</span>
+      </div>
+      <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0 0 36px; color: #1A2C5C; max-width: 760px;">מקצועיות. אמון. שפה אחת.</h2>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 22px; font-size: 18px; line-height: 1.85; color: #3F4659; max-width: 820px;">
+        <p style="margin: 0;">החינוך החרדי, ובפרט עולם תלמודי התורה ובתי הספר, צמא לליווי ארגוני אמיתי. גופים ממשלתיים מציעים סיוע, אך לרוב הם רחוקים מהבנת המאפיינים הייחודיים של מנהלי המוסדות ואינם זוכים לאמונם המלא. מנגד, תקציבים נכבדים, ובראשם תוכנית גפן, הולכים לאיבוד רק משום שאין מי שיתרגם בירוקרטיה מורכבת לעשייה בשטח.</p>
+        <p style="margin: 0;">בינה נוסדה כדי לסגור בדיוק את הפער הזה: גוף עצמאי, חוץ-ממסדי, שמדבר את שפת המגזר באופן טבעי, ובו-זמנית מביא איתו מתודה מקצועית, סטנדרט עבודה גבוה ויכולת מוכחת למיצוי משאבים.</p>
+        <p style="margin: 0;">כעמותה, השליחות שלנו היא לחזק את מוסדות החינוך מבפנים, לסייע למנהלים לפעול מתוך בהירות, יציבות ואחריות, וליצור תשתיות ניהול חזקות שיעניקו לתלמידים את המעטפת הטובה ביותר לאורך זמן.</p>
+      </div>
+      <figure style="margin: 48px 0 0; padding: 32px 40px; background: #fff; border-radius: 18px; border-right: 4px solid #B5894E; box-shadow: 0 14px 40px rgba(26,44,92,0.08); position: relative;">
+        <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 64px; line-height: 0; color: #E2D3B4; position: absolute; top: 34px; left: 32px;">״</div>
+        <blockquote style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.5; color: #1A2C5C; font-weight: 500;">השאיפה היא לבנות מנגנון שמאפשר למנהל הטוב להתפנות לליבת התפקיד שלו — החינוך — בידיעה שמישהו אחראי מלווה אותו בכל מה שמסביב.</blockquote>
+      </figure>
     </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <h3>גוף חוץ-ממסדי</h3>
-        <p>אין לנו אג'נדה זרה. אנחנו עובדים עבור המוסד, מתוך הבנה של רוחו ושל הרבנים העומדים בראשו.</p>
-      </div>
-      <div class="why-item">
-        <h3>מטרה ציבורית</h3>
-        <p>אנחנו עמותה שהוקמה כדי לקדם את איכות החינוך במגזר החרדי, ולחזק מוסדות שמבקשים להתנהל במקצועיות ובאחריות.</p>
-      </div>
-      <div class="why-item">
-        <h3>ליווי לטווח ארוך</h3>
-        <p>מודל של ליווי שנתי, ולא הדרכה חד-פעמית, שמייצר שינוי שנשאר גם שנה אחרי שיצאנו מהשטח.</p>
-      </div>
-      <div class="why-item">
-        <h3>צוות מומחים</h3>
-        <p>צוות מוביל, כל אחד עם תחום חוזק שונה, שעובד יחד על כל מוסד. כך מקבלים את הטוב מכולם.</p>
-      </div>
-      <div class="why-item">
-        <h3>התקשרות שקופה</h3>
-        <p>מסלולי ליווי ברורים, תיאום ציפיות מסודר וללא הפתעות. העלות מסובסדת כחלק ממטרת העמותה להנגיש ליווי מקצועי למוסדות החינוך.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="ethics" class="section ethics">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-eyebrow">אתיקה וסודיות</p>
-      <h2>אמון מתחיל בשמירה קפדנית על מידע.</h2>
-      <p class="section-sub">תהליך ייעוץ ארגוני נוגע לעיתים בנושאים רגישים: צוות, הנהלה, תקציבים, הורים, תלמידים ותהליכים פנימיים. לכן אנחנו עובדים מתוך מחויבות מלאה לדיסקרטיות, אחריות ושמירה על כבוד המוסד והאנשים שבתוכו.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <h3>סודיות מלאה</h3>
-        <p>מידע שנמסר לנו במסגרת הליווי נשאר בתוך התהליך, ואינו מועבר לגורמים חיצוניים ללא הסכמה מפורשת של הנהלת המוסד.</p>
+  <!-- SERVICES -->
+  <section id="services" style="padding: 104px 28px; background: #fff;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 760px; margin-bottom: 56px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">שירותים</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0 0 18px; color: #1A2C5C;">שלוש זרועות עבודה. ליווי אחד לאורך הדרך.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">העמותה פועלת במודל מקצועי ושקוף: מסלולי ליווי ברורים, מתודה אחידה והתאמה לצרכי המוסד.</p>
       </div>
-      <div class="why-item">
-        <h3>שמירה על מידע</h3>
-        <p>מסמכים, נתונים ותובנות מקצועיות נשמרים בזהירות, משותפים רק עם מי שנדרש לתהליך, ומטופלים מתוך אחריות למידע רגיש.</p>
-      </div>
-      <div class="why-item">
-        <h3>כבוד לאנשים ולמוסד</h3>
-        <p>האבחון והליווי נעשים בלי שיפוטיות ובלי חשיפה מיותרת. המטרה היא לחזק את המוסד, לא לסמן אשמים או להוציא חולשות החוצה.</p>
-      </div>
-      <div class="why-item">
-        <h3>גבולות עבודה ברורים</h3>
-        <p>כבר בתחילת הדרך מגדירים מי שותף לתהליך, איזה מידע נאסף, כיצד משתמשים בו, ומהם גבולות הדיווח והעדכון מול ההנהלה.</p>
+      <div class="bgrid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;">
+        <div class="bservice" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 34px 30px; display: flex; flex-direction: column;">
+          <div style="width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700; margin-bottom: 22px;">א</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 25px; font-weight: 700; color: #1A2C5C; margin: 0 0 12px;">ייעוץ ארגוני למוסדות</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: #5A6072; margin: 0 0 22px;">מיפוי מבני, הגדרת תפקידים, נהלי עבודה ומערכות בקרה — תשתיות ניהול ששורדות גם אחרי שאנחנו יוצאים מהשטח.</p>
+          <ul style="list-style: none; padding: 20px 0 0; margin: auto 0 0; display: flex; flex-direction: column; gap: 11px; border-top: 1px solid rgba(26,44,92,0.1);">
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>אבחון ארגוני מקיף</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>בניית מבנה ארגוני ונהלים</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>עבודה מול הוועד והרבנים</span></li>
+          </ul>
+        </div>
+        <div class="bservice" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 34px 30px; display: flex; flex-direction: column;">
+          <div style="width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700; margin-bottom: 22px;">ב</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 25px; font-weight: 700; color: #1A2C5C; margin: 0 0 12px;">ליווי מנהלים</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: #5A6072; margin: 0 0 22px;">תוכנית ליווי שנתית צמודה למנהל המוסד: פגישות סדורות, פתרון מצבי משבר, פיתוח חשיבה אסטרטגית וגיבוי בקבלת החלטות.</p>
+          <ul style="list-style: none; padding: 20px 0 0; margin: auto 0 0; display: flex; flex-direction: column; gap: 11px; border-top: 1px solid rgba(26,44,92,0.1);">
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>פגישות שבועיות / דו-שבועיות</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>זמינות בין הפגישות</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>בניית תוכנית עבודה שנתית</span></li>
+          </ul>
+        </div>
+        <div class="bservice" style="background: #F8F6F1; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 34px 30px; display: flex; flex-direction: column;">
+          <div style="width: 52px; height: 52px; border-radius: 13px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700; margin-bottom: 22px;">ג</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 25px; font-weight: 700; color: #1A2C5C; margin: 0 0 12px;">מיצוי משאבים ותקציבים</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: #5A6072; margin: 0 0 22px;">חיבור המוסד לתקציבי תוכנית גפן, רשויות מקומיות, קרנות ועמותות. תרגום הבירוקרטיה לכסף שבאמת מגיע למוסד.</p>
+          <ul style="list-style: none; padding: 20px 0 0; margin: auto 0 0; display: flex; flex-direction: column; gap: 11px; border-top: 1px solid rgba(26,44,92,0.1);">
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>בדיקת זכאויות וכתיבת בקשות</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>ליווי מול רשויות וגופי מימון</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #3F4659; line-height: 1.45;"><span style="flex: none; width: 7px; height: 7px; border-radius: 50%; background: #B5894E; margin-top: 8px;"></span><span>בקרת ביצוע ודיווחים</span></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="section contact">
-  <div class="container contact-inner">
-    <div class="contact-text">
-      <p class="section-eyebrow light">דברו איתנו</p>
-      <h2>מנהלים מוסד? מובילים קהילה?<br/>בואו נדבר.</h2>
-      <p>
-        פגישת היכרות ראשונית ללא עלות וללא התחייבות. נכיר את האתגר, נשמע מה ניסיתם עד כה
-        ונציע כיוון פעולה אם נראה שיש התאמה. במידת הצורך נציג גם מסלול ליווי מסובסד ומותאם ליכולת ולצרכי המוסד.
-      </p>
-      <ul class="contact-list">
-        <li><span class="lbl">דוא"ל</span><a href="mailto:info@bina-edu.co.il">info@bina-edu.co.il</a></li>
-        <li><span class="lbl">טלפון</span><a href="tel:+972502250493">050-2250493</a></li>
-      </ul>
+  <!-- APPROACH -->
+  <section id="approach" style="padding: 104px 28px; background: #F7F4EE;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 780px; margin-bottom: 56px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">השיטה</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0 0 18px; color: #1A2C5C;">מתודה סדורה. עוגנים ברורים. אחריות לתוצאה.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">לא תוכנית במגירה ולא הרצאת השראה — תהליך מובנה, נמדד, עם נקודות החלטה ברורות לאורך הדרך.</p>
+      </div>
+      <div class="bgrid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;">
+        <div style="padding: 0 22px; position: relative;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+            <span style="flex: none; font-family: 'Frank Ruhl Libre', serif; font-size: 40px; font-weight: 900; color: #1A2C5C; line-height: 1;">01</span>
+            <span style="flex: 1; height: 2px; background: linear-gradient(90deg, #B5894E, rgba(181,137,78,0.15));"></span>
+          </div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">אבחון</h3>
+          <p style="font-size: 15.5px; line-height: 1.65; color: #5A6072; margin: 0;">שיחות עומק עם ההנהלה, הצוות והרבנים. מיפוי מצב קיים: ארגוני, תקציבי וחינוכי.</p>
+        </div>
+        <div style="padding: 0 22px; position: relative;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+            <span style="flex: none; font-family: 'Frank Ruhl Libre', serif; font-size: 40px; font-weight: 900; color: #1A2C5C; line-height: 1;">02</span>
+            <span style="flex: 1; height: 2px; background: linear-gradient(90deg, #B5894E, rgba(181,137,78,0.15));"></span>
+          </div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">תוכנית עבודה</h3>
+          <p style="font-size: 15.5px; line-height: 1.65; color: #5A6072; margin: 0;">גיבוש מסמך יעדים, סדרי עדיפויות, לוחות זמנים ותקציב, בהתאמה למציאות של המוסד.</p>
+        </div>
+        <div style="padding: 0 22px; position: relative;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+            <span style="flex: none; font-family: 'Frank Ruhl Libre', serif; font-size: 40px; font-weight: 900; color: #1A2C5C; line-height: 1;">03</span>
+            <span style="flex: 1; height: 2px; background: linear-gradient(90deg, #B5894E, rgba(181,137,78,0.15));"></span>
+          </div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">ליווי שוטף</h3>
+          <p style="font-size: 15.5px; line-height: 1.65; color: #5A6072; margin: 0;">פגישות קבועות, פתרון אתגרים תוך כדי תנועה, חיבור לגורמי מימון וטיפול בנקודות התורפה.</p>
+        </div>
+        <div style="padding: 0 22px; position: relative;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+            <span style="flex: none; font-family: 'Frank Ruhl Libre', serif; font-size: 40px; font-weight: 900; color: #1A2C5C; line-height: 1;">04</span>
+            <span style="flex: 1; height: 2px; background: linear-gradient(90deg, #B5894E, rgba(181,137,78,0.15));"></span>
+          </div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">הטמעה ועצמאות</h3>
+          <p style="font-size: 15.5px; line-height: 1.65; color: #5A6072; margin: 0;">העברת ידע וכלים לצוות הניהולי, כך שהמוסד ימשיך לפעול חזק גם בסיום הליווי.</p>
+        </div>
+      </div>
     </div>
-    <form class="contact-form" id="contactForm" action="https://formsubmit.co/info@bina-edu.co.il" method="POST" onsubmit="return handleContact(event)">
-      <input type="hidden" name="_subject" value="פנייה חדשה מאתר בינה" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-      <label>
-        <span>שם מלא</span>
-        <input type="text" name="שם מלא" required autocomplete="name" />
-      </label>
-      <label>
-        <span>שם המוסד / הארגון</span>
-        <input type="text" name="מוסד / ארגון" autocomplete="organization" />
-      </label>
-      <label>
-        <span>טלפון</span>
-        <input type="tel" name="טלפון" required autocomplete="tel" />
-      </label>
-      <label>
-        <span>דוא"ל</span>
-        <input type="email" name="אימייל" autocomplete="email" />
-      </label>
-      <label class="full">
-        <span>במה נוכל לעזור?</span>
-        <textarea name="הודעה" rows="4"></textarea>
-      </label>
-      <button type="submit" class="btn btn-primary full">שליחה</button>
-      <p class="form-note" id="formNote" hidden>תודה, נחזור אליכם בהקדם.</p>
-    </form>
-  </div>
-</section>
+  </section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="logo-icon-192.png" alt="" width="36" height="36" />
-      <span class="footer-brand-text">
-        <span class="brand-name">בינה</span>
-        <span class="brand-tag">ייעוץ ארגוני וחינוכי לציבור החרדי</span>
-      </span>
+  <!-- MODELS -->
+  <section id="models" style="padding: 104px 28px; background: #fff;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 760px; margin-bottom: 56px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">המודלים שלנו</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0 0 18px; color: #1A2C5C;">שלושה כלים שעושים סדר במורכבות.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">מודלים פשוטים להסבר ועמוקים ליישום: מיפוי מצב המוסד, הבנת תפקיד המנהל, והובלת שינוי שמחזיק לאורך זמן.</p>
+      </div>
+      <div class="bgrid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-bottom: 40px;">
+        <div class="bmodelcard" style="border: 1px solid rgba(26,44,92,0.12); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 14px 26px; background: #1A2C5C; color: #D8B877; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">מיפוי מוסדי</div>
+          <div style="padding: 28px 26px 30px;">
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 27px; font-weight: 700; color: #1A2C5C; margin: 0 0 12px;">7 הזירות</h3>
+            <p style="font-size: 16px; line-height: 1.65; color: #5A6072; margin: 0;">מסגרת לאבחון מלא של מוסד חינוכי: הנהגה, צוות, למידה, אקלים, קהילה ותשתיות — בהתאמה לשפת המגזר.</p>
+          </div>
+        </div>
+        <div class="bmodelcard" style="border: 1px solid rgba(26,44,92,0.12); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 14px 26px; background: #1A2C5C; color: #D8B877; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">ניהול יומיומי</div>
+          <div style="padding: 28px 26px 30px;">
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 27px; font-weight: 700; color: #1A2C5C; margin: 0 0 12px;">10 תפקידי המנהל</h3>
+            <p style="font-size: 16px; line-height: 1.65; color: #5A6072; margin: 0;">המודל של מינצברג עוזר להבין את עבודת המנהל דרך תפקידי הנהגה, מידע וקבלת החלטות.</p>
+          </div>
+        </div>
+        <div class="bmodelcard" style="border: 1px solid rgba(26,44,92,0.12); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 14px 26px; background: #1A2C5C; color: #D8B877; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">ניהול שינוי</div>
+          <div style="padding: 28px 26px 30px;">
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 27px; font-weight: 700; color: #1A2C5C; margin: 0 0 12px;">8 הצעדים של קוטר</h3>
+            <p style="font-size: 16px; line-height: 1.65; color: #5A6072; margin: 0;">דרך מובנית להפוך שינוי מרעיון טוב לתהליך: דחיפות, שותפים, חזון, הצלחות קצרות ועיגון בתרבות.</p>
+          </div>
+        </div>
+      </div>
+      <a href="/models.html" class="boutline" style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #1A2C5C; text-decoration: none; padding: 13px 24px; border: 1.5px solid rgba(26,44,92,0.2); border-radius: 11px;">לכל המודלים בעמוד המודלים שלנו ←</a>
     </div>
-    <p class="footer-copy">© <span id="year"></span> בינה · כל הזכויות שמורות</p>
-  </div>
-</footer>
+  </section>
 
-<script src="script.js?v=20260616-1508"></script>
+  <!-- TEAM -->
+  <section id="team" style="padding: 104px 28px; background: #F7F4EE;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 760px; margin-bottom: 56px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">מי אנחנו</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0 0 18px; color: #1A2C5C;">הצוות שמאחורי בינה.</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: #5A6072; margin: 0;">צוות מוביל, כל אחד עם ניסיון וזווית מקצועית משלימה — שילוב של עומק תורני, שפה ארגונית ומקצועיות תפעולית.</p>
+      </div>
+      <div class="bgrid-2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px;">
+        <div class="bteam" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 28px; display: flex; gap: 22px; align-items: flex-start;">
+          <img src="/team-shneor.jpg" alt="שניאור רוכברגר" style="flex: none; width: 96px; height: 96px; border-radius: 14px; object-fit: cover; box-shadow: 0 6px 18px rgba(26,44,92,0.15);">
+          <div>
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 3px;">שניאור רוכברגר</h3>
+            <div style="font-size: 14px; font-weight: 600; color: #B5894E; margin-bottom: 12px;">מומחה לחינוך ומנהיגות</div>
+            <p style="font-size: 15px; line-height: 1.62; color: #5A6072; margin: 0;">ממונה על החינוך החברתי-ערכי במחוז החרדי במשרד החינוך, בוגר מכון מנדל למנהיגות, מנהל תנועת הנוער ״אחווה״ ומרצה לתואר שני באוניברסיטת חיפה.</p>
+          </div>
+        </div>
+        <div class="bteam" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 28px; display: flex; gap: 22px; align-items: flex-start;">
+          <img src="/team-meir.jpg" alt="מאיר כהן" style="flex: none; width: 96px; height: 96px; border-radius: 14px; object-fit: cover; box-shadow: 0 6px 18px rgba(26,44,92,0.15);">
+          <div>
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 3px;">מאיר כהן</h3>
+            <div style="font-size: 14px; font-weight: 600; color: #B5894E; margin-bottom: 12px;">מוביל תהליכים וחדשנות</div>
+            <p style="font-size: 15px; line-height: 1.62; color: #5A6072; margin: 0;">משלב רקע בפסיכולוגיה ובעולם הפיננסי עם תשוקה להובלת תהליכים ולשילוב טכנולוגיה ככלי לקידום, ולהפיכת חזון לתהליכים מעשיים ונמדדים.</p>
+          </div>
+        </div>
+        <div class="bteam" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 28px; display: flex; gap: 22px; align-items: flex-start;">
+          <img src="/team-yehuda.jpg" alt="יהודה נוימן" style="flex: none; width: 96px; height: 96px; border-radius: 14px; object-fit: cover; box-shadow: 0 6px 18px rgba(26,44,92,0.15);">
+          <div>
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 3px;">יהודה נוימן</h3>
+            <div style="font-size: 14px; font-weight: 600; color: #B5894E; margin-bottom: 12px;">מוביל תהליכים מורכבים</div>
+            <p style="font-size: 15px; line-height: 1.62; color: #5A6072; margin: 0;">בעל ניסיון בהובלת תהליכים מורכבים וחיבור בין גורמים שונים. מסייע למנהלים לפרק אתגר גדול לשלבים ברורים, לרתום שותפים ולהתקדם עד לתוצאה בשטח.</p>
+          </div>
+        </div>
+        <div class="bteam" style="background: #fff; border: 1px solid rgba(26,44,92,0.08); border-radius: 18px; padding: 28px; display: flex; gap: 22px; align-items: flex-start;">
+          <img src="/team-yehoshua.jpg" alt="יהושע בניאל" style="flex: none; width: 96px; height: 96px; border-radius: 14px; object-fit: cover; box-shadow: 0 6px 18px rgba(26,44,92,0.15);">
+          <div>
+            <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 23px; font-weight: 700; color: #1A2C5C; margin: 0 0 3px;">יהושע בניאל</h3>
+            <div style="font-size: 14px; font-weight: 600; color: #B5894E; margin-bottom: 12px;">יועץ ארגוני למערכות חינוך</div>
+            <p style="font-size: 15px; line-height: 1.62; color: #5A6072; margin: 0;">בעל M.Ed, עם מעל 15 שנות ניסיון בהוראה, ניהול תיכון וליווי מוסדות מטעם הפיקוח. מחבר בין חזון, יעדים ומשאבים לעשייה חיה.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section style="padding: 104px 28px; background: #fff;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 760px; margin-bottom: 56px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">למה אנחנו</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0; color: #1A2C5C;">מקצועיות שמדברת את שפת המגזר.</h2>
+      </div>
+      <div class="bgrid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(26,44,92,0.1); border: 1px solid rgba(26,44,92,0.1); border-radius: 18px; overflow: hidden;">
+        <div style="background: #fff; padding: 34px 30px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; color: #B5894E; margin-bottom: 12px;">01</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">גוף חוץ-ממסדי</h3>
+          <p style="font-size: 15.5px; line-height: 1.62; color: #5A6072; margin: 0;">אין לנו אג׳נדה זרה. אנחנו עובדים עבור המוסד, מתוך הבנה של רוחו ושל הרבנים העומדים בראשו.</p>
+        </div>
+        <div style="background: #fff; padding: 34px 30px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; color: #B5894E; margin-bottom: 12px;">02</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">מטרה ציבורית</h3>
+          <p style="font-size: 15.5px; line-height: 1.62; color: #5A6072; margin: 0;">עמותה שהוקמה כדי לקדם את איכות החינוך במגזר החרדי ולחזק מוסדות שמבקשים להתנהל במקצועיות ובאחריות.</p>
+        </div>
+        <div style="background: #fff; padding: 34px 30px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; color: #B5894E; margin-bottom: 12px;">03</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">ליווי לטווח ארוך</h3>
+          <p style="font-size: 15.5px; line-height: 1.62; color: #5A6072; margin: 0;">מודל של ליווי שנתי, ולא הדרכה חד-פעמית, שמייצר שינוי שנשאר גם שנה אחרי שיצאנו מהשטח.</p>
+        </div>
+        <div style="background: #fff; padding: 34px 30px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; color: #B5894E; margin-bottom: 12px;">04</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">צוות מומחים</h3>
+          <p style="font-size: 15.5px; line-height: 1.62; color: #5A6072; margin: 0;">צוות מוביל, כל אחד עם תחום חוזק שונה, שעובד יחד על כל מוסד — כך מקבלים את הטוב מכולם.</p>
+        </div>
+        <div style="background: #fff; padding: 34px 30px;">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; color: #B5894E; margin-bottom: 12px;">05</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; color: #1A2C5C; margin: 0 0 10px;">התקשרות שקופה</h3>
+          <p style="font-size: 15.5px; line-height: 1.62; color: #5A6072; margin: 0;">מסלולי ליווי ברורים, תיאום ציפיות מסודר וללא הפתעות. העלות מסובסדת כחלק ממטרת העמותה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETHICS -->
+  <section id="ethics" style="padding: 104px 28px; background: linear-gradient(160deg, #142042, #1A2C5C); color: #fff;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="max-width: 800px; margin-bottom: 56px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #D8B877;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #D8B877;">אתיקה וסודיות</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; margin: 0 0 18px;">אמון מתחיל בשמירה קפדנית על מידע.</h2>
+        <p style="font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300;">תהליך ייעוץ ארגוני נוגע לעיתים בנושאים רגישים: צוות, הנהלה, תקציבים, הורים ותלמידים. לכן אנחנו עובדים מתוך מחויבות מלאה לדיסקרטיות, אחריות ושמירה על כבוד המוסד והאנשים שבתוכו.</p>
+      </div>
+      <div class="bgrid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;">
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 24px;">
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 21px; font-weight: 700; color: #D8B877; margin: 0 0 12px;">סודיות מלאה</h3>
+          <p style="font-size: 15px; line-height: 1.62; color: rgba(255,255,255,0.78); margin: 0;">מידע שנמסר לנו במסגרת הליווי נשאר בתוך התהליך, ואינו מועבר לגורמים חיצוניים ללא הסכמה מפורשת.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 24px;">
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 21px; font-weight: 700; color: #D8B877; margin: 0 0 12px;">שמירה על מידע</h3>
+          <p style="font-size: 15px; line-height: 1.62; color: rgba(255,255,255,0.78); margin: 0;">מסמכים, נתונים ותובנות נשמרים בזהירות, משותפים רק עם מי שנדרש לתהליך ומטופלים באחריות.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 24px;">
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 21px; font-weight: 700; color: #D8B877; margin: 0 0 12px;">כבוד לאנשים ולמוסד</h3>
+          <p style="font-size: 15px; line-height: 1.62; color: rgba(255,255,255,0.78); margin: 0;">האבחון נעשה בלי שיפוטיות ובלי חשיפה מיותרת. המטרה היא לחזק את המוסד, לא לסמן אשמים.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 24px;">
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 21px; font-weight: 700; color: #D8B877; margin: 0 0 12px;">גבולות עבודה ברורים</h3>
+          <p style="font-size: 15px; line-height: 1.62; color: rgba(255,255,255,0.78); margin: 0;">כבר בתחילת הדרך מגדירים מי שותף לתהליך, איזה מידע נאסף וכיצד משתמשים בו.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding: 104px 28px; background: #F7F4EE;">
+    <div class="bgrid-contact" style="max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="width: 28px; height: 1.5px; background: #B5894E;"></span>
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #B5894E;">דברו איתנו</span>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; margin: 0 0 20px; color: #1A2C5C;">מנהלים מוסד? מובילים קהילה? בואו נדבר.</h2>
+        <p style="font-size: 17px; line-height: 1.75; color: #5A6072; margin: 0 0 34px;">פגישת היכרות ראשונית ללא עלות וללא התחייבות. נכיר את האתגר, נשמע מה ניסיתם עד כה ונציע כיוון פעולה. במידת הצורך נציג גם מסלול ליווי מסובסד ומותאם ליכולת ולצרכי המוסד.</p>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <a href="mailto:info@bina-edu.co.il" class="bcontact-row" style="display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 16px 20px; background: #fff; border: 1px solid rgba(26,44,92,0.1); border-radius: 13px;">
+            <span style="flex: none; width: 42px; height: 42px; border-radius: 10px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-size: 19px;">✉</span>
+            <span style="display: flex; flex-direction: column;"><span style="font-size: 13px; color: #8A7A55; font-weight: 600;">דוא״ל</span><span style="font-size: 16px; color: #1A2C5C; font-weight: 600;" dir="ltr">info@bina-edu.co.il</span></span>
+          </a>
+          <a href="tel:+972502250493" class="bcontact-row" style="display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 16px 20px; background: #fff; border: 1px solid rgba(26,44,92,0.1); border-radius: 13px;">
+            <span style="flex: none; width: 42px; height: 42px; border-radius: 10px; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-size: 19px;">☎</span>
+            <span style="display: flex; flex-direction: column;"><span style="font-size: 13px; color: #8A7A55; font-weight: 600;">טלפון</span><span style="font-size: 16px; color: #1A2C5C; font-weight: 600;" dir="ltr">050-2250493</span></span>
+          </a>
+        </div>
+      </div>
+      <form id="contactForm" action="https://formsubmit.co/meir.cohen1997@gmail.com" method="POST" style="background: #fff; border: 1px solid rgba(26,44,92,0.1); border-radius: 20px; padding: 38px; box-shadow: 0 24px 60px rgba(26,44,92,0.1);">
+        <div id="formSuccess" style="display: none; text-align: center; padding: 40px 10px;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #1A2C5C; color: #D8B877; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 20px;">✓</div>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; color: #1A2C5C; margin: 0 0 10px;">תודה! קיבלנו את הפנייה.</h3>
+          <p style="font-size: 16px; color: #5A6072; margin: 0;">נחזור אליכם בהקדם לתיאום פגישת ההיכרות.</p>
+        </div>
+        <div id="formFields">
+          <input type="hidden" name="_subject" value="פנייה חדשה מאתר בינה">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="bgrid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #3F4659;">שם מלא
+              <input class="binput" type="text" name="שם מלא" required placeholder="ישראל ישראלי">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #3F4659;">שם המוסד / הארגון
+              <input class="binput" type="text" name="שם המוסד" placeholder="שם המוסד">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #3F4659;">טלפון
+              <input class="binput" type="tel" name="טלפון" required placeholder="050-0000000">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #3F4659;">דוא״ל
+              <input class="binput" type="email" name="דואל" placeholder="name@email.com">
+            </label>
+          </div>
+          <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #3F4659; margin-top: 16px;">במה נוכל לעזור?
+            <textarea class="binput" name="הודעה" rows="4" placeholder="ספרו לנו בקצרה על המוסד והאתגר..." style="resize: vertical;"></textarea>
+          </label>
+          <button type="submit" class="bsubmit">שליחה</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #101A36; color: rgba(255,255,255,0.7); padding: 44px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="/logo-icon-192.png" alt="בינה" style="width: 38px; height: 38px; border-radius: 9px; object-fit: contain; background: #fff; padding: 3px;">
+        <span style="font-family: 'Frank Ruhl Libre', serif; font-size: 17px; color: #fff; font-weight: 500;">בינה · ייעוץ ארגוני וחינוכי לציבור החרדי</span>
+      </div>
+      <span style="font-size: 14px;">© <span id="year"></span> בינה · כל הזכויות שמורות</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var f=document.getElementById('contactForm'); if(!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn=f.querySelector('button[type=submit]'); if(btn){btn.disabled=true; btn.textContent='שולח...';}
+    fetch('https://formsubmit.co/ajax/meir.cohen1997@gmail.com', {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify(Object.fromEntries(new FormData(f).entries()))})
+      .then(function(r){ return r.json(); })
+      .then(function(){ document.getElementById('formFields').style.display='none'; document.getElementById('formSuccess').style.display='block'; })
+      .catch(function(){ if(btn){btn.disabled=false; btn.textContent='שליחה';} alert('אירעה שגיאה בשליחה. נסו שוב או פנו במייל info@bina-edu.co.il'); });
+  });
+})();
+</script>
+<script>var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
 </body>
 </html>
